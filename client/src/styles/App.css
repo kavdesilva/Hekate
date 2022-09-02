@@ -1,0 +1,15 @@
+#login-form {
+    display: none;
+}
+
+#signup-form {
+    display: none;
+}
+
+#login-signup {
+    display: block;
+}
+
+#next-cycle {
+    display: block;
+}
