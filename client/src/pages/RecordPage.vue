@@ -8,7 +8,7 @@
 <script>
 import CurrentDate from '../components/CurrentDate.vue';
     export default {
-        name: "RecordPage",
-        components: { CurrentDate }
+    name: "RecordPage",
+    components: { CurrentDate }
     }
 </script>
