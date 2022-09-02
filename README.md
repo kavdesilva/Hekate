@@ -1,12 +1,11 @@
 # Hekate
 
-## 9/1/2022
-
-## By: [Kristina DeSilva](https:github.com/kavdesilva)
+### By: [Kristina DeSilva](https:github.com/kavdesilva)
+### Date: 9/1/2022
 
 ---
 
-## _Description_
+### _Description_
 
 #### A period tracker web application that keeps your data secure. Named after Hekate, ancient Greek goddess of the Moon. Often depicted holding a key or a torch, Hekate is associated with crossroads and liminal spaces; she is also considered a protector of knowledge.
 
@@ -27,19 +26,19 @@ ___
 
 ### _Trello Board_
 
-#### [Capstone Project - Hekate]()
+#### [Capstone Project - Hekate Period Tracker App](https://trello.com/b/dwYRZXGW/hekate-period-tracker-app)
 
 ---
 
 ### _Component Heirarchy Diagram (CHD)_
 
-![Image](assets/)
+![Image](assets/Hekate_CHD_v.1.png)
 
 ---
 
 ### _Entity Relationship Diagram (ERD)_
 
-![Image](assets/)
+![Image](assets/Hekate_ERD_v.1.png)
 
 ---
 
@@ -52,11 +51,11 @@ ___
 
 ### _Future Updates_
 
-- [ ] README.md
-- [ ] Trello Board
+- [x] README.md
+- [x] Trello Board
 - [ ] Wireframes
-- [ ] ERD
-- [ ] CHD
+- [x] ERD
+- [x] CHD
 - [ ] Heroku Deployment
 - [ ] TBD
 
