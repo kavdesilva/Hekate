@@ -1,16 +1,20 @@
 <template>
-
+  <div id="app">
+    <header>
+      <NavBar />
+    </header>
+    <main>
+      <router-view />
+    </main>
+  </div>
 </template>
 
 <script>
-
-
-export default {
-  name: 'App',
-  components: {
-    
+  import NavBar from './components/NavBar.vue'
+  export default {
+    name: 'App',
+    components: { NavBar }
   }
-}
 </script>
 
 <style>
