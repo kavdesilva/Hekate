@@ -3,13 +3,19 @@
         <p>this is the homepage.</p>
     </div>
     <div id="login-signup">
-        <button v-on:click="loginToggle">log in</button>
-        <button v-on:click="signupToggle">sign up</button>
+        <button v-on:click="loginForm">log in</button>
+        <button v-on:click="signupForm">sign up</button>
         <LogIn />
         <SignUp />
     </div>
     <div id="next-cycle">
         <NextCycle />
+    </div>
+    <div v-if="loggedIn == true">
+        <button v-on:click="logOut">logout</button>
+    </div>
+    <div v-else>
+        <button v-on:click="logIn">log in demo</button>
     </div>
 </template>
 
@@ -27,11 +33,11 @@ import NextCycle from '../components/NextCycle.vue';
         this.isLoggedIn();
     },
     methods: {
-        loginToggle() {
+        loginForm() {
             document.getElementById('login-form').style.display = 'block'
             document.getElementById('signup-form').style.display = 'none'
         },
-        signupToggle() {
+        signupForm() {
             document.getElementById('login-form').style.display = 'none'
             document.getElementById('signup-form').style.display = 'block'
         },
@@ -43,6 +49,14 @@ import NextCycle from '../components/NextCycle.vue';
                 document.getElementById('login-signup').style.display = 'none'
                 document.getElementById('next-cycle').style.display = 'block'
             }
+        },
+        logOut() {
+            this.loggedIn = false
+            this.isLoggedIn()
+        },
+        logIn() {
+            this.loggedIn = true
+            this.isLoggedIn()
         }
     }
 }

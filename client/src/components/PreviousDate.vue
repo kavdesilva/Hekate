@@ -6,6 +6,6 @@
 
 <script>
     export default {
-        name: 'PastDate'
+        name: 'PreviousDate'
     }
 </script>

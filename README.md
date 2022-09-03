@@ -32,13 +32,13 @@ ___
 
 ### _Component Heirarchy Diagram (CHD)_
 
-![Image](assets/Hekate_CHD_v.1.png)
+![Image](assets/Hekate_CHD_v.2.png)
 
 ---
 
 ### _Entity Relationship Diagram (ERD)_
 
-![Image](assets/Hekate_ERD_v.1.png)
+![Image](assets/Hekate_ERD_v.2.png)
 
 ---
 
