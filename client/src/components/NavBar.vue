@@ -6,15 +6,14 @@
       <router-link to="/reflect">Reflect</router-link>
       <router-link to="/delete">Delete</router-link>
     </nav>
-  </template>
-  
-  <script>
-    export default {
-      name: 'NavBar'
-    }
-  </script>
-  
-  <style scoped>
-  
-  </style>
-  
+</template>
+
+<script>
+  export default {
+    name: 'NavBar'
+  }
+</script>
+
+<style scoped>
+
+</style>
