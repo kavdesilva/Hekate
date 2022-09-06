@@ -1,6 +1,21 @@
 <template>
     <div id="login-form">
-        <p>this is the login form.</p>
+        <p>login</p>
+        <div className="form-container">
+            <form>
+                <input
+                    id="username"
+                    type="text"
+                    placeholder="username"
+                />
+                <input
+                    id="passwordDigest"
+                    type="text"
+                    placeholder="password"
+                />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
         <button v-on:click="closeForm">close</button>
     </div>
 </template>
