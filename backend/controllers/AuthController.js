@@ -1,7 +1,16 @@
 const { User } = require('../models')
 const middleware = require('../middleware')
 
-const Login = async (req, res) => {
+const getUsers = async (req, res) => {
+    try {
+        const users = await User.findAll()
+        res.send(users)
+    } catch (error) {
+        throw error
+    }
+}
+
+const login = async (req, res) => {
     try {
         const user = await User.findOne({
             where: { email: req.body.email },
@@ -24,11 +33,11 @@ const Login = async (req, res) => {
     }
 }
 
-const SignUp = async (req, res) => {
+const signUp = async (req, res) => {
     try {
-        const { email, password, name } = req.body
+        const { username, password, email, gender } = req.body
         let passwordDigest = await middleware.hashPassword(password)
-        const user = await User.create({ email, passwordDigest, name })
+        const user = await User.create({ username, passwordDigest, email, gender })
         res.send(user)
     } catch (error) {
         throw error
@@ -36,6 +45,7 @@ const SignUp = async (req, res) => {
 }
 
 module.exports = {
-    Login,
-    SignUp
+    getUsers,
+    login,
+    signUp
 }
