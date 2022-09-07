@@ -10,12 +10,7 @@
     </div>
     <div id="next-cycle">
         <NextCycle />
-    </div>
-    <div v-if="loggedIn == true">
         <button v-on:click="logOut">logout</button>
-    </div>
-    <div v-else>
-        <button v-on:click="logIn">log in demo</button>
     </div>
 </template>
 
@@ -23,26 +18,29 @@
 import SignUp from '../components/SignUp.vue';
 import LogIn from '../components/LogIn.vue'
 import NextCycle from '../components/NextCycle.vue';
+import router from '@/router';
     export default {
     name: "HomePage",
     components: { LogIn, SignUp, NextCycle },
     data: () => ({
-        loggedIn: false
+        currentUser: null
     }),
     mounted() {
         this.isLoggedIn();
     },
     methods: {
         loginForm() {
+            router.push('/login')
             document.getElementById('login-form').style.display = 'block'
             document.getElementById('signup-form').style.display = 'none'
         },
         signupForm() {
+            router.push('/signup')
             document.getElementById('login-form').style.display = 'none'
             document.getElementById('signup-form').style.display = 'block'
         },
         isLoggedIn() {
-            if (!this.loggedIn) {
+            if (!this.currentUser) {
                 document.getElementById('login-signup').style.display = 'block'
                 document.getElementById('next-cycle').style.display = 'none'
             } else {
@@ -51,11 +49,7 @@ import NextCycle from '../components/NextCycle.vue';
             }
         },
         logOut() {
-            this.loggedIn = false
-            this.isLoggedIn()
-        },
-        logIn() {
-            this.loggedIn = true
+            this.currentUser = null
             this.isLoggedIn()
         }
     }

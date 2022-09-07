@@ -21,11 +21,14 @@
 </template>
 
 <script>
+import router from '@/router';
+
     export default {
         name: 'LogIn',
         props: ['loggedIn', 'isLoggedIn'],
         methods: {
             closeForm() {
+                router.push('/')
                 document.getElementById('login-form').style.display = 'none'
             }
         }

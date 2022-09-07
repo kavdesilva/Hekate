@@ -33,10 +33,13 @@
 </template>
 
 <script>
+import router from '@/router';
+
     export default {
         name: 'SignUp',
         methods: {
             closeForm() {
+                router.push('/')
                 document.getElementById('signup-form').style.display = 'none'
             }
         }
