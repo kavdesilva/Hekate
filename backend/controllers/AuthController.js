@@ -31,6 +31,18 @@ const updateProfile = async (req, res) => {
     }
 }
 
+const deleteAccount = async (req, res) => {
+    try{
+        let userId = parseInt(req.params.user_id)
+        let accountDeleted = await User.destroy({
+            where: {id: userId}
+        })
+        res.send(`deleted account id ${userId}`)
+    } catch (error) {
+        throw error
+    }
+}
+
 const login = async (req, res) => {
     try {
         const user = await User.findOne({
@@ -69,6 +81,7 @@ module.exports = {
     getUsers,
     getUserById,
     updateProfile,
+    deleteAccount,
     login,
     signUp
 }
