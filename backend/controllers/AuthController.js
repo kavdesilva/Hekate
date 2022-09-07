@@ -19,6 +19,18 @@ const getUserById = async (req, res) => {
     }
 }
 
+const updateProfile = async (req, res) => {
+    try{
+        let userId = parseInt(req.params.user_id)
+        let profileUpdate = await User.update(req.body, {
+            where: {id: userId}, returning: true
+        })
+        res.send(profileUpdate)
+    } catch (error) {
+        throw error
+    }
+}
+
 const login = async (req, res) => {
     try {
         const user = await User.findOne({
@@ -56,6 +68,7 @@ const signUp = async (req, res) => {
 module.exports = {
     getUsers,
     getUserById,
+    updateProfile,
     login,
     signUp
 }
