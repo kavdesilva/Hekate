@@ -68,10 +68,24 @@ const login = async (req, res) => {
 
 const signUp = async (req, res) => {
     try {
-        const { username, password, email, gender } = req.body
-        let passwordDigest = await middleware.hashPassword(password)
-        const user = await User.create({ username, passwordDigest, email, gender })
-        res.send(user)
+        const user = await User.findOne({
+            where: { username: req.body.username },
+            raw: true
+        })
+        const email = await User.findOne({
+            where: { email: req.body.email },
+            raw: true
+        })
+        if (user) {
+            res.send('error: account already exists under that username')
+        } else if (email) {
+            res.send('error: account already exists under that email')
+        } else {
+            const { username, password, email, gender } = req.body
+            let passwordDigest = await middleware.hashPassword(password)
+            const newUser = await User.create({ username, passwordDigest, email, gender })
+            res.send(newUser)
+        }
     } catch (error) {
         throw error
     }
