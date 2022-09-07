@@ -21,9 +21,6 @@ import router from '@/router';
     data: () => ({
         currentUser: null
     }),
-    mounted() {
-
-    },
     methods: {
         loginForm() {
             router.push('/login')

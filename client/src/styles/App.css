@@ -4,18 +4,33 @@
     color: whitesmoke;
 }
 
-/* #login-form {
-    display: none;
+#hekate-logo {
+    max-width: 375px;
+    min-width: 300px;
 }
 
-#signup-form {
-    display: none;
-} */
+.form-container {
 
-#login-signup {
-    display: block;
 }
 
-#next-cycle {
-    display: block;
+.form-container input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 5px;
+    width: 250px;
+    height: 25px;
+}
+
+.form-container select {
+    padding: 3px;
+    width: 260px;
+    height: 35px;
+}
+
+button {
+    margin: 10px 5px;
+    width: 150px;
+    height: 40px;
 }

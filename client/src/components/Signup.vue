@@ -17,31 +17,26 @@
                     placeholder="email address"/>
                 <select
                     id="gender"
-                    v-model="selected"
+                    v-model="select"
                     placeholder="username">
-                    <option disabled value="select">select</option>
+                    <option disabled>select</option>
                     <option>female</option>
                     <option>male</option>
                     <option>non-binary</option>
                     <option>prefer not to say</option>
-                </select>
-                <button type="submit">Submit</button>
+                </select><br/>
+                <button type="submit">submit</button>
             </form>
-        </div>
-        <button v-on:click="closeForm">close</button>
+        </div><br/>
+        <router-link to="/">close</router-link>
     </div>
 </template>
 
 <script>
-import router from '@/router';
-
     export default {
         name: 'SignUp',
         methods: {
-            closeForm() {
-                router.push('/')
-                document.getElementById('signup-form').style.display = 'none'
-            }
+
         }
     }
 </script>

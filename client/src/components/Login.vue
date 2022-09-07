@@ -13,24 +13,19 @@
                     type="text"
                     placeholder="password"
                 />
-                <button type="submit">Submit</button>
+                <button type="submit">submit</button>
             </form>
-        </div>
-        <button v-on:click="closeForm">close</button>
+        </div><br/>
+        <router-link to="/">close</router-link>
     </div>
 </template>
 
 <script>
-import router from '@/router';
-
     export default {
         name: 'LogIn',
         props: ['loggedIn', 'isLoggedIn'],
         methods: {
-            closeForm() {
-                router.push('/')
-                document.getElementById('login-form').style.display = 'none'
-            }
+
         }
     }
 </script>
