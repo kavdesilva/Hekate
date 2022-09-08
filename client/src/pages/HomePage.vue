@@ -19,12 +19,17 @@
 <script>
 import NextCycle from '../components/NextCycle.vue';
 import router from '@/router';
+import axios from 'axios'
     export default {
     name: "HomePage",
     components: { NextCycle },
     data: () => ({
+        users: [],
         currentUser: null
     }),
+    mounted() {
+        this.getUsers();
+    },
     methods: {
         loginForm() {
             router.push('/login')
@@ -35,6 +40,11 @@ import router from '@/router';
         logOut() {
             this.currentUser = null
             router.push('/')
+        },
+        async getUsers() {
+            const res = await axios.get('http://localhost:3001/api/users')
+            this.users = res.data
+            console.log(this.users[1])
         }
     }
 }

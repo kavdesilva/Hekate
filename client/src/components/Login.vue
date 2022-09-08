@@ -26,7 +26,7 @@
 <script>
     export default {
         name: 'LogIn',
-        props: ['currentUser'],
+        props: ['currentUser', 'users'],
         data: () => ({
             username: '',
             password: ''
@@ -34,17 +34,17 @@
         methods: {
             handleSubmit(e) {
                 e.preventDefault()
-                alert('form submitted')
                 this.setCurrentUser(this.username)
                 console.log(this.username)
+                alert('form submitted')
                 this.username = ''
                 this.password = ''
             },
             handleFormChange(e) {
                 this[e.target.name] = e.target.value
             },
-            setCurrentUser() {
-                this.$emit('currentUser', 'username')
+            setCurrentUser(username) {
+                this.$emit('currentUser')
             }
         }
     }
