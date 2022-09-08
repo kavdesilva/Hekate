@@ -9,8 +9,15 @@
     min-width: 300px;
 }
 
-.form-container {
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 25px;
+    border-bottom: 2px solid whitesmoke;
+}
 
+a {
+    text-decoration: none;
 }
 
 .form-container input {

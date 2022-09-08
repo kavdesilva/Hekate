@@ -8,7 +8,7 @@
                     type="text"
                     placeholder="username"/>
                 <input
-                    id="passwordDigest"
+                    id="password"
                     type="text"
                     placeholder="password"/>
                 <input

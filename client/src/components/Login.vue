@@ -2,16 +2,19 @@
     <div id="login-form">
         <p>login</p>
         <div className="form-container">
-            <form>
+            <form v-on:submit="handleSubmit">
                 <input
-                    id="username"
+                    name="username"
                     type="text"
                     placeholder="username"
+                    :value="username"
+                    v-on:input="handleFormChange"
                 />
                 <input
-                    id="passwordDigest"
-                    type="text"
+                    name="password"
+                    type="password"
                     placeholder="password"
+                    :value="password"
                 />
                 <button type="submit">submit</button>
             </form>
@@ -23,9 +26,26 @@
 <script>
     export default {
         name: 'LogIn',
-        props: ['loggedIn', 'isLoggedIn'],
+        props: ['currentUser'],
+        data: () => ({
+            username: '',
+            password: ''
+        }),
         methods: {
-
+            handleSubmit(e) {
+                e.preventDefault()
+                alert('form submitted')
+                this.setCurrentUser(this.username)
+                console.log(this.username)
+                this.username = ''
+                this.password = ''
+            },
+            handleFormChange(e) {
+                this[e.target.name] = e.target.value
+            },
+            setCurrentUser() {
+                this.$emit('currentUser', 'username')
+            }
         }
     }
 </script>

@@ -1,12 +1,16 @@
 <template>
     <div id="login-signup" v-if="!currentUser">
-        <header>welcome.</header>
+        <header>
+            <h1>welcome.</h1>
+        </header>
         <button v-on:click="loginForm">log in</button>
         <button v-on:click="signupForm">sign up</button>
-        <router-view />
+        <router-view currentUser="currentUser"/>
     </div>
     <div id="next-cycle" v-else>
-        <header>welcome back.</header>
+        <header>
+            <h1>welcome back.</h1>
+        </header>
         <NextCycle />
         <button v-on:click="logOut">logout</button>
     </div>
