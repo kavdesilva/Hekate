@@ -5,7 +5,7 @@
         </header>
         <button v-on:click="loginForm">log in</button>
         <button v-on:click="signupForm">sign up</button>
-        <router-view currentUser="currentUser"/>
+        <router-view />
     </div>
     <div id="next-cycle" v-else>
         <header>
@@ -44,7 +44,7 @@ import axios from 'axios'
         async getUsers() {
             const res = await axios.get('http://localhost:3001/api/users')
             this.users = res.data
-            console.log(this.users[1])
+            console.log(this.users)
         }
     }
 }

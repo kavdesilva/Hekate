@@ -8,14 +8,13 @@
                     type="text"
                     placeholder="username"
                     :value="username"
-                    v-on:input="handleFormChange"
-                />
+                    v-on:input="handleFormChange"/>
                 <input
                     name="password"
                     type="password"
                     placeholder="password"
                     :value="password"
-                />
+                    v-on:input="handleFormChange"/>
                 <button type="submit">submit</button>
             </form>
         </div><br/>
@@ -34,17 +33,17 @@
         methods: {
             handleSubmit(e) {
                 e.preventDefault()
+                alert('form submitted')
                 this.setCurrentUser(this.username)
                 console.log(this.username)
-                alert('form submitted')
                 this.username = ''
                 this.password = ''
             },
             handleFormChange(e) {
                 this[e.target.name] = e.target.value
             },
-            setCurrentUser(username) {
-                this.$emit('currentUser')
+            setCurrentUser() {
+                this.$emit('currentUser', 'username')
             }
         }
     }
