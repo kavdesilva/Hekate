@@ -4,16 +4,16 @@
         <div className="form-container">
             <form v-on:submit="handleSubmit">
                 <input
-                    name="username"
+                    name="email"
                     type="text"
-                    placeholder="username"
-                    :value="username"
+                    placeholder="email"
+                    v-model="formData.email"
                     v-on:input="handleFormChange"/>
                 <input
                     name="password"
                     type="password"
                     placeholder="password"
-                    :value="password"
+                    v-model="formData.password"
                     v-on:input="handleFormChange"/>
                 <button type="submit">submit</button>
             </form>
@@ -23,27 +23,38 @@
 </template>
 
 <script>
+import router from '@/router'
+import axios from 'axios'
     export default {
         name: 'LogIn',
-        props: ['currentUser', 'users'],
         data: () => ({
-            username: '',
-            password: ''
+            formData: {
+                email: '',
+                password: ''
+            },
+            loggedUser: null
         }),
+        props: ['users'],
         methods: {
             handleSubmit(e) {
                 e.preventDefault()
                 alert('form submitted')
-                this.setCurrentUser(this.username)
-                console.log(this.username)
-                this.username = ''
+                this.getUser()
+                this.setCurrentUser()
+                this.email = ''
                 this.password = ''
+                router.push('/')
             },
             handleFormChange(e) {
                 this[e.target.name] = e.target.value
             },
+            async getUser() {
+                const res = await axios.post('http://localhost:3001/api/login', this.formData)
+                this.loggedUser = res.data
+                console.log(this.loggedUser)
+            },
             setCurrentUser() {
-                this.$emit('currentUser', 'username')
+                this.$emit('currentUser', this.loggedUser)
             }
         }
     }

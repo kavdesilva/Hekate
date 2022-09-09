@@ -28,7 +28,7 @@
                     <option disabled value="">select</option>
                     <option value="female">female</option>
                     <option value="male">male</option>
-                    <option value="nonbinary">non-binary</option>
+                    <option value="non-binary">non-binary</option>
                     <option value="other">other/prefer not to say</option>
                 </select><br/>
                 <button type="submit">submit</button>
@@ -40,6 +40,7 @@
 
 <script>
 import axios from 'axios'
+import router from '@/router'
     export default {
         name: 'SignUp',
         data: () => ({
@@ -49,25 +50,34 @@ import axios from 'axios'
                 email: '',
                 gender: ''
             },
-            currentUser: null
+            newUser: null
         }),
+        props: ['users'],
         methods: {
             handleSubmit(e) {
                 e.preventDefault()
                 alert('form submitted')
                 this.createUser()
-                this.username = ''
-                this.password = ''
-                this.email = ''
-                this.gender = ''
+                this.emitCurrentUser()
+                this.resetFormData()
+                router.push('/')
             },
             handleFormChange(e) {
                 this[e.target.name] = e.target.value
             },
             async createUser() {
                 const res = await axios.post('http://localhost:3001/api/signup', this.formData)
-                this.currentUser = res.data
-                console.log(this.currentUser)
+                this.newUser = res.data
+                console.log(this.newUser)
+            },
+            emitCurrentUser() {
+                this.$emit('currentUser', this.newUser)
+            },
+            resetFormData() {
+                this.username = ''
+                this.password = ''
+                this.email = ''
+                this.gender = ''
             }
         }
     }

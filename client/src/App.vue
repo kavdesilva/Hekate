@@ -5,7 +5,7 @@
       <NavBar />
     </header>
     <main>
-      <router-view />
+      <router-view @newUser="currentUser" @currentUser="currentUser" :currentUser="currentUser"/>
     </main>
   </div>
 </template>
@@ -14,7 +14,12 @@
   import NavBar from './components/NavBar.vue'
   export default {
     name: 'App',
-    components: { NavBar }
+    components: { NavBar },
+    data: () => {
+      return {
+        currentUser: null
+      }
+    }
   }
 </script>
 

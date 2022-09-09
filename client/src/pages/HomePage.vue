@@ -5,7 +5,7 @@
         </header>
         <button v-on:click="loginForm">log in</button>
         <button v-on:click="signupForm">sign up</button>
-        <router-view />
+        <router-view :users="users"/>
     </div>
     <div id="next-cycle" v-else>
         <header>
@@ -24,9 +24,9 @@ import axios from 'axios'
     name: "HomePage",
     components: { NextCycle },
     data: () => ({
-        users: [],
-        currentUser: null
+        users: []
     }),
+    props: ['currentUser'],
     mounted() {
         this.getUsers();
     },
@@ -38,13 +38,14 @@ import axios from 'axios'
             router.push('/signup')
         },
         logOut() {
-            this.currentUser = null
+            this.prop.currentUser = null
             router.push('/')
         },
         async getUsers() {
             const res = await axios.get('http://localhost:3001/api/users')
             this.users = res.data
             console.log(this.users)
+            console.log(this.$props.currentUser)
         }
     }
 }
