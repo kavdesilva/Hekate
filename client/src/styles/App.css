@@ -2,6 +2,11 @@
     text-align: center;
     background-color: black;
     color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+p, a {
+    font-size: 20px;
 }
 
 #hekate-logo {
@@ -28,16 +33,32 @@ a {
     padding: 5px;
     width: 250px;
     height: 25px;
+    border: 1px solid rgb(224, 223, 223);
+    font-size: 16px;
 }
 
 .form-container select {
     padding: 3px;
-    width: 260px;
+    width: 262px;
     height: 35px;
+    border: 1px solid rgb(224, 223, 223);
+    font-size: 16px;
 }
 
 button {
     margin: 10px 5px;
-    width: 150px;
-    height: 40px;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    padding: 5px 10px;
+    color: whitesmoke;
+    border: 1px solid rgb(224, 223, 223);
+    border-radius: 4px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 500;
+}
+
+textarea {
+    width: 400px;
+    height: 150px;
 }
