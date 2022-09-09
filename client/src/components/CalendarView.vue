@@ -9,13 +9,15 @@
             id="calendar" 
             monthNameFormat="long" 
             showNowButton 
+            hideOffsetDates
             nowButtonLabel="today"
             :maxDate="new Date()"
             :enableTimePicker="false"
-            calendarClassName="">
+            :dayNames="['m', 'tu', 'w', 'th', 'f', 'sa', 'su']"
+            :monthChangeOnScroll="false">
         </DatePicker>
         <h3 v-if="date">selected date: {{ date.toDateString().toLowerCase() }}</h3>
-        <button v-if="date" >add record</button>
+        <button v-if="date">add record</button>
     </div>
 </template>
 
@@ -44,7 +46,7 @@ import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss';
         font-size: 30px;
     }
     .dp__now_wrap {
-        margin-bottom: 20px;
+        height: 75px;
     }
     .dp__now_button {
         font-size: 20px;
