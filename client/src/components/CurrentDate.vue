@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h2>current date:</h2>
         <div className="record-form-container">
+            <h2>current date:</h2>
             <form>
                 <!-- flow -->
                 <section className="flow">
