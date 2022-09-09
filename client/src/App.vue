@@ -5,7 +5,7 @@
       <NavBar />
     </header>
     <main>
-      <router-view @newUser="currentUser" @currentUser="currentUser" :currentUser="currentUser"/>
+      <router-view @newUser="currentUser" @loggedUser="currentUser" :currentUser="currentUser"/>
     </main>
   </div>
 </template>
@@ -23,6 +23,3 @@
   }
 </script>
 
-<style>
-
-</style>
