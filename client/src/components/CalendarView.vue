@@ -19,17 +19,18 @@
         </DatePicker>
         <h3 v-if="date">selected date:</h3>
         <h2 v-if="date"  id="selected-date">{{ date.toDateString().toLowerCase() }}</h2>
-        <button v-if="date" v-on:click="viewDate">view record</button>
+        <ViewDate v-if="date" />
     </div>
 </template>
 
 <script>
 import router from '@/router'
+import ViewDate from '../components/ViewDate.vue'
 import DatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss';
     export default {
         name: 'CalendarView',
-        components: { DatePicker },
+        components: { DatePicker, ViewDate },
         data() {
             return {
                 date: null,
