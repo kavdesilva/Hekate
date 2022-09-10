@@ -1,10 +1,10 @@
 <template>
     <nav>
-      <router-link to="/">Home</router-link>
-      <router-link to="/record">Record</router-link>
-      <router-link to="/recall">Recall</router-link>
-      <router-link to="/reflect">Reflect</router-link>
-      <router-link to="/delete">Delete</router-link>
+      <router-link to="/">home</router-link>
+      <router-link to="/record">record</router-link>
+      <router-link to="/recall">recall</router-link>
+      <router-link to="/reflect">reflect</router-link>
+      <!-- <router-link to="/delete">delete</router-link> -->
     </nav>
 </template>
 

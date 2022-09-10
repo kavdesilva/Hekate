@@ -12,6 +12,8 @@
             <h1>welcome back.</h1>
         </header>
         <NextCycle />
+        <button v-on:click="updateAccount">update account</button>
+        <button v-on:click="deleteAccount">delete account</button><br />
         <button v-on:click="logOut">logout</button>
     </div>
 </template>
@@ -38,7 +40,7 @@ import axios from 'axios'
             router.push('/signup')
         },
         logOut() {
-            this.prop.currentUser = null
+            this.$prop.currentUser = null
             router.push('/')
         },
         async getUsers() {
@@ -46,6 +48,12 @@ import axios from 'axios'
             this.users = res.data
             console.log(this.users)
             console.log(this.$props.currentUser)
+        },
+        updateAccount() {
+            router.push('/update')
+        },
+        deleteAccount() {
+            router.push('/delete')
         }
     }
 }

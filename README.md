@@ -32,7 +32,7 @@ ___
 
 ### _Component Heirarchy Diagram (CHD)_
 
-![Image](assets/Hekate_CHD_v.2.png)
+![Image](assets/Hekate_CHD_v.3.png)
 
 ---
 

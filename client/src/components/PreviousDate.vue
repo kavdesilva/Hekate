@@ -114,7 +114,7 @@
                         v-model="formData.notes"
                         v-on:input="handleFormChange"></textarea>
                 </section>
-
+                <button type="submit">submit</button>
             </form>
         </div>
     </div>

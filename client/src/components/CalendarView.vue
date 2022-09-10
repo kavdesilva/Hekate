@@ -17,12 +17,14 @@
             :monthChangeOnScroll="false"
             menuClassName="dp-custom-menu">
         </DatePicker>
-        <h3 v-if="date">selected date: {{ date.toDateString().toLowerCase() }}</h3>
-        <button v-if="date">add record</button>
+        <h3 v-if="date">selected date:</h3>
+        <h2 v-if="date"  id="selected-date">{{ date.toDateString().toLowerCase() }}</h2>
+        <button v-if="date" v-on:click="viewDate">view record</button>
     </div>
 </template>
 
 <script>
+import router from '@/router'
 import DatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss';
     export default {
@@ -31,7 +33,12 @@ import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss';
         data() {
             return {
                 date: null,
-            };
+            }
+        },
+        methods: {
+            viewDate(){
+                router.push('/view-date')
+            }
         }
     }
 </script>
@@ -56,7 +63,7 @@ import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss';
         color: whitesmoke;
         border-color: rgb(224, 223, 223);
         font-family: Georgia, 'Times New Roman', Times, serif;
-        font-weight: 500;
+        font-weight: 600;
     }
     .dp__cell_disabled {
         color: rgb(97, 96, 96);
@@ -64,5 +71,31 @@ import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss';
     .dp-custom-menu {
         font-family: Georgia, 'Times New Roman', Times, serif;
         border: none;
+    }
+    .select-input {
+        margin: 5px 3px;
+        padding: 5px;
+        width: auto;
+        border-radius: 4px;
+        border-color: var(--dp-border-color);
+        outline: none;
+    }
+    .dp__button_bottom {
+        height: 50px;
+        background-color: black;
+    }
+    .dp__button_bottom:hover {
+        background-color: black;
+        filter: brightness(70%);
+    }
+    #selected-date {
+        color: darkred;
+    }
+    .dp__icon:hover {
+        stroke: darkred;
+        fill: darkred;
+    }
+    .dp__inner_nav:hover {
+        background-color: black;
     }
 </style>

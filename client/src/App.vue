@@ -17,7 +17,7 @@
     components: { NavBar },
     data: () => {
       return {
-        currentUser: null
+        currentUser: 'null'
       }
     }
   }

@@ -55,7 +55,17 @@ button {
     border: 1px solid rgb(224, 223, 223);
     border-radius: 4px;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight: 500;
+    font-weight: 600;
+}
+
+button:hover {
+    color: darkred;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+a:hover {
+    color: darkred;
 }
 
 textarea {

@@ -1,6 +1,6 @@
 <template>
     <div>
-        your next cycle begins.
+        <p>your next cycle begins.</p>
     </div>
 </template>
 
