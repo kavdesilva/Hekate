@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>create record.</h1>
+        <h1>record.</h1>
         <CurrentDate />
         <PreviousDate />
     </div>
