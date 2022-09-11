@@ -42,7 +42,7 @@ import axios from 'axios'
             router.push('/signup')
         },
         logOut() {
-            this.$prop.currentUser = null
+            this.$emit('logUser', null)
             router.push('/')
         },
         async getUsers() {
