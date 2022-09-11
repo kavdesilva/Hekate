@@ -5,7 +5,7 @@
       <NavBar />
     </header>
     <main>
-      <router-view @newUser="currentUser" @loggedUser="currentUser" :currentUser="currentUser"/>
+      <router-view :currentUser="currentUser" @logUser="logUser"/>
     </main>
   </div>
 </template>
@@ -17,7 +17,13 @@
     components: { NavBar },
     data: () => {
       return {
-        currentUser: 'null'
+        currentUser: null
+      }
+    },
+    methods: {
+      logUser(user) {
+        this.currentUser = user
+        console.log(this.currentUser)
       }
     }
   }

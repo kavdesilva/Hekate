@@ -9,7 +9,7 @@
                     placeholder="username"
                     v-model="formData.username"
                     v-on:input="handleFormChange"/> 
-                    <!-- :value="formData.username" -->
+                    :value="formData.username"
                 <input
                     name="currentPassword"
                     type="currentPassword"
@@ -17,23 +17,17 @@
                     v-model="formData.currentPassword"
                     v-on:input="handleFormChange"/>
                 <input
-                    name="newPassword"
-                    type="newPassword"
-                    placeholder="newPassword"
-                    v-model="formData.newPassword"
-                    v-on:input="handleFormChange"/>
-                <input
                     name="email"
                     type="text"
                     placeholder="email address"
                     v-model="formData.email"
                     v-on:input="handleFormChange"/>
-                    <!-- :value="formData.email" -->
+                    :value="formData.email"
                 <select
                     name="gender"
                     v-model="formData.gender"
                     v-on:change="handleFormChange">
-                    <!-- value="formData.gender" -->
+                    value="formData.gender"
                     <option disabled value="">select</option>
                     <option value="female">female</option>
                     <option value="male">male</option>
@@ -56,10 +50,10 @@ import router from '@/router'
             formData: {
                 username: this.currentUser.username,
                 password: '',
-                newPassword: '',
                 email: this.currentUser.email,
                 gender: this.currentUser.gender
-            }
+            },
+            updatedUser: null
         }),
         props: ['users', 'currentUser'],
         methods: {
@@ -75,12 +69,12 @@ import router from '@/router'
             async updateUser() {
                 const res = await axios.put(`http://localhost:3001/api/users/${this.currentUser.id}`, this.formData)
                 // if formData.password === this.currentUser.password, then >>
-                this.currentUser = res.data
-                console.log(this.currentUser)
+                this.updatedUser = res.data
+                console.log(this.updatedUser)
                 // else throw error, log out
             },
-            emitCurrentUser() {
-                this.$emit('currentUser', this.currentUser)
+            emitUpdatedUser() {
+                this.$emit('logUser', this.updatedUser)
             }
         }
     }

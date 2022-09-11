@@ -5,7 +5,7 @@
         </header>
         <button v-on:click="loginForm">log in</button>
         <button v-on:click="signupForm">sign up</button>
-        <router-view :users="users"/>
+        <router-view :users="users" :userEmit="userEmit" @emitUserToRoot="emitUserToRoot"/>
     </div>
     <div id="next-cycle" v-else>
         <header>
@@ -26,11 +26,13 @@ import axios from 'axios'
     name: "HomePage",
     components: { NextCycle },
     data: () => ({
-        users: []
+        users: [],
+        userEmit: null
     }),
     props: ['currentUser'],
     mounted() {
         this.getUsers();
+        this.emitUserToRoot();
     },
     methods: {
         loginForm() {
@@ -47,7 +49,11 @@ import axios from 'axios'
             const res = await axios.get('http://localhost:3001/api/users')
             this.users = res.data
             console.log(this.users)
-            console.log(this.$props.currentUser)
+        },
+        emitUserToRoot(user) {
+            this.userEmit = user
+            this.$emit('logUser', this.userEmit)
+            console.log(this.userEmit)
         },
         updateAccount() {
             router.push('/update')

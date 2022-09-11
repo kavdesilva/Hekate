@@ -34,13 +34,13 @@ import axios from 'axios'
             },
             loggedUser: null
         }),
-        props: ['users'],
+        props: ['users', 'userEmit'],
         methods: {
             handleSubmit(e) {
                 e.preventDefault()
                 alert('form submitted')
                 this.getUser()
-                this.setCurrentUser()
+                this.emitLoggedUser()
                 this.email = ''
                 this.password = ''
                 router.push('/')
@@ -53,8 +53,8 @@ import axios from 'axios'
                 this.loggedUser = res.data
                 console.log(this.loggedUser)
             },
-            setCurrentUser() {
-                this.$emit('currentUser', this.loggedUser)
+            emitLoggedUser() {
+                this.$emit('emitUserToRoot', this.loggedUser)
             }
         }
     }

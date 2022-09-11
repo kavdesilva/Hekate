@@ -52,13 +52,13 @@ import router from '@/router'
             },
             newUser: null
         }),
-        props: ['users'],
+        props: ['users', 'currentUser', 'userEmit'],
         methods: {
             handleSubmit(e) {
                 e.preventDefault()
                 alert('form submitted')
                 this.createUser()
-                this.emitCurrentUser()
+                this.emitNewUser()
                 this.resetFormData()
                 router.push('/')
             },
@@ -70,8 +70,8 @@ import router from '@/router'
                 this.newUser = res.data
                 console.log(this.newUser)
             },
-            emitCurrentUser() {
-                this.$emit('currentUser', this.newUser)
+            emitNewUser() {
+                this.$emit('emitUserToRoot', this.newUser)
             },
             resetFormData() {
                 this.username = ''
