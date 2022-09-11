@@ -40,21 +40,16 @@ import axios from 'axios'
                 e.preventDefault()
                 alert('form submitted')
                 this.getUser()
-                this.emitLoggedUser()
-                this.email = ''
-                this.password = ''
-                router.push('/')
             },
             handleFormChange(e) {
                 this[e.target.name] = e.target.value
             },
             async getUser() {
                 const res = await axios.post('http://localhost:3001/api/login', this.formData)
-                this.loggedUser = res.data
-                console.log(this.loggedUser)
-            },
-            emitLoggedUser() {
+                this.loggedUser = res.data.user
                 this.$emit('emitUserToRoot', this.loggedUser)
+                console.log(this.loggedUser)
+                router.push('/')
             }
         }
     }
