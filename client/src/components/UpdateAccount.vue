@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div>
         <p>update</p>
         <div className="form-container">
@@ -70,4 +70,4 @@ import axios from 'axios'
             }
         }
     }
-</script>
+</script> -->

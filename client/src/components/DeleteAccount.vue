@@ -13,12 +13,16 @@ import router from '@/router'
     export default {
         name: 'DeleteAccount',
         props: ['users', 'currentUser'],
+        data: () => ({
+            deletedUser: null
+        }),
         methods: {
             deleteRecord() {}, // delete client-side data
             async deleteAccount() {
                 if (confirm(`are you sure you want to delete ${this.currentUser.username}'s account? this action is irreversible.`) == true) {
                     await axios.delete(`http://localhost:3001/api/users/${this.currentUser.id}`, this.currentUser)
                     alert(`account deleted.`)
+                    this.$emit('logUser', this.deletedUser)
                     router.push('/')
                 } else {
                     router.push('/delete')

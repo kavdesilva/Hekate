@@ -5,7 +5,7 @@
       <NavBar />
     </header>
     <main>
-      <router-view :currentUser="currentUser" :selectedDate="selectedDate" @logUser="logUser"/>
+      <router-view :currentUser="currentUser" :currentDate="currentDate" @logUser="logUser"/>
     </main>
   </div>
 </template>
@@ -18,17 +18,13 @@
     data: () => {
       return {
         currentUser: null,
-        selectedDate: null
+        currentDate: new Date()
       }
     },
     methods: {
       logUser(user) {
         this.currentUser = user
         console.log(this.currentUser)
-      },
-      selectDate(date) {
-        this.selectedDate = date
-        console.log(this.selectedDate)
       }
     }
   }
