@@ -9,9 +9,9 @@
     </div>
     <div id="next-cycle" v-else>
         <header>
-            <h1>welcome back.</h1>
+            <h1>welcome back, {{currentUser[0].username}}.</h1>
         </header>
-        <NextCycle />
+        <NextCycle :currentUser="currentUser"/>
         <button v-on:click="updateAccount">update account</button>
         <button v-on:click="deleteAccount">delete account</button><br />
         <button v-on:click="logOut">logout</button>
