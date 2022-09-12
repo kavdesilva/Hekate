@@ -58,9 +58,6 @@ import router from '@/router'
                 e.preventDefault()
                 alert('form submitted')
                 this.createUser()
-                this.emitNewUser()
-                this.resetFormData()
-                router.push('/')
             },
             handleFormChange(e) {
                 this[e.target.name] = e.target.value
@@ -69,9 +66,9 @@ import router from '@/router'
                 const res = await axios.post('http://localhost:3001/api/signup', this.formData)
                 this.newUser = res.data
                 console.log(this.newUser)
-            },
-            emitNewUser() {
                 this.$emit('emitUserToRoot', this.newUser)
+                this.resetFormData()
+                router.push('/')
             },
             resetFormData() {
                 this.username = ''

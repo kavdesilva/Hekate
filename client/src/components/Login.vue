@@ -47,9 +47,13 @@ import axios from 'axios'
             async getUser() {
                 const res = await axios.post('http://localhost:3001/api/login', this.formData)
                 this.loggedUser = this.users?.filter((user) => user.id === res.data.user.id)
-                this.$emit('emitUserToRoot', this.loggedUser)
-                console.log(this.loggedUser)
+                this.$emit('emitUserToRoot', this.loggedUser[0])
+                this.resetFormData()
                 router.push('/')
+            },
+            resetFormData() {
+                this.email = ''
+                this.password = ''
             }
         }
     }

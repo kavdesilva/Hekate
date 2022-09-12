@@ -9,7 +9,7 @@
     </div>
     <div id="next-cycle" v-else>
         <header>
-            <h1>welcome back, {{currentUser[0].username}}.</h1>
+            <h1>welcome back, {{currentUser.username}}.</h1>
         </header>
         <NextCycle :currentUser="currentUser"/>
         <button v-on:click="updateAccount">update account</button>
