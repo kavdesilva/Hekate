@@ -6,15 +6,13 @@
                 <input
                     name="username"
                     type="text"
-                    placeholder="username"
+                    :value="formData.username"
                     v-model="formData.username"
                     v-on:input="handleFormChange"/> 
-                    :value="formData.username"
                 <input
                     name="currentPassword"
                     type="currentPassword"
-                    placeholder="currentPassword"
-                    v-model="formData.currentPassword"
+                    v-model="formData.password"
                     v-on:input="handleFormChange"/>
                 <input
                     name="email"
@@ -22,12 +20,11 @@
                     placeholder="email address"
                     v-model="formData.email"
                     v-on:input="handleFormChange"/>
-                    :value="formData.email"
                 <select
                     name="gender"
+                    :value="formData.gender"
                     v-model="formData.gender"
                     v-on:change="handleFormChange">
-                    value="formData.gender"
                     <option disabled value="">select</option>
                     <option value="female">female</option>
                     <option value="male">male</option>
@@ -47,10 +44,10 @@ import axios from 'axios'
         name: 'UpdateAccount',
         data: () => ({
             formData: {
-                username: this.$props.currentUser.username,
+                username: this.currentUser.username,
                 password: '',
-                email: this.$props.currentUser.email,
-                gender: this.$props.currentUser.gender
+                email: this.currentUser.email,
+                gender: this.currentUser.gender
             },
             updatedUser: null
         }),
