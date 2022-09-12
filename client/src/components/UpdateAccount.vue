@@ -43,15 +43,14 @@
 
 <script>
 import axios from 'axios'
-import router from '@/router'
     export default {
         name: 'UpdateAccount',
         data: () => ({
             formData: {
-                username: this.currentUser.username,
+                username: this.$props.currentUser.username,
                 password: '',
-                email: this.currentUser.email,
-                gender: this.currentUser.gender
+                email: this.$props.currentUser.email,
+                gender: this.$props.currentUser.gender
             },
             updatedUser: null
         }),
@@ -61,19 +60,15 @@ import router from '@/router'
                 e.preventDefault()
                 alert('user updated')
                 this.updateUser()
-                router.push('/')
             },
             handleFormChange(e) {
                 this[e.target.name] = e.target.value
             },
             async updateUser() {
-                const res = await axios.put(`http://localhost:3001/api/users/${this.currentUser.id}`, this.formData)
+                const res = await axios.put(`http://localhost:3001/api/users/${this.$props.currentUser.id}`, this.formData)
                 // if formData.password === this.currentUser.password, then >>
                 this.updatedUser = res.data
                 console.log(this.updatedUser)
-                // else throw error, log out
-            },
-            emitUpdatedUser() {
                 this.$emit('logUser', this.updatedUser)
             }
         }
