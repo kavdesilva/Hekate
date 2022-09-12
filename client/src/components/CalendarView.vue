@@ -37,15 +37,14 @@ import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss';
                 date: null,
             }
         },
-        mounted() {
-            this.emitDate()
-        },
         methods: {
             viewDate(){
                 router.push('/view-date')
             },
-            emitDate(){
-                this.$emit('selectDate', this.date)
+            emitSelectedDate(){
+                if(this.date){
+                    this.$emit('selectDate', this.date)
+                }
             }
         }
     }

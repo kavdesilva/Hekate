@@ -28,6 +28,7 @@
       },
       selectDate(date) {
         this.selectedDate = date
+        console.log(this.selectedDate)
       }
     }
   }
