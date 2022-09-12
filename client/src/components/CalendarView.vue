@@ -19,7 +19,7 @@
         </DatePicker>
         <h3 v-if="date">selected date:</h3>
         <h2 v-if="date"  id="selected-date">{{ date.toDateString().toLowerCase() }}</h2>
-        <ViewDate v-if="date" />
+        <ViewDate v-if="date" :selectedDate="selectedDate"/>
     </div>
 </template>
 
@@ -31,14 +31,21 @@ import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss';
     export default {
         name: 'CalendarView',
         components: { DatePicker, ViewDate },
+        props: ['selectedDate'],
         data() {
             return {
                 date: null,
             }
         },
+        mounted() {
+            this.emitDate()
+        },
         methods: {
             viewDate(){
                 router.push('/view-date')
+            },
+            emitDate(){
+                this.$emit('selectDate', this.date)
             }
         }
     }

@@ -31,8 +31,7 @@ import axios from 'axios'
     }),
     props: ['currentUser'],
     mounted() {
-        this.getUsers();
-        this.emitUserToRoot();
+        this.getUsers()
     },
     methods: {
         loginForm() {

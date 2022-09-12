@@ -10,6 +10,7 @@
 import router from '@/router'
     export default {
         name: 'ViewDate',
+        props: ['date'],
         data () {
             return {
                 today: true // replace with: selectedDate: currentDate(today) as default; if selectedDate: previousDate, then previous record pushed. add selectedDate 'id' to end of route.
