@@ -31,7 +31,7 @@
       },
       todaysDate() {
         console.log(this.C)
-      }
+      },
     }
   }
 </script>
