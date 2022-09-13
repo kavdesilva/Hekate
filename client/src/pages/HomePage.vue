@@ -52,7 +52,6 @@ import axios from 'axios'
         emitUserToRoot(user) {
             this.userEmit = user
             this.$emit('logUser', this.userEmit)
-            console.log(this.userEmit)
         },
         updateAccount() {
             router.push('/update')
