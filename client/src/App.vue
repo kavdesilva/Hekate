@@ -18,7 +18,7 @@
     data: () => {
       return {
         currentUser: null,
-        currentDate: new Date().toLocaleDateString()
+        currentDate: new Date().toISOString().slice(0, 10)
       }
     },
     mounted() {

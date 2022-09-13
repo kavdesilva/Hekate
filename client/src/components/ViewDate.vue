@@ -18,9 +18,9 @@ import router from '@/router'
             currentDateRecord(){
                 router.push(`/record/${this.currentDate}`)
             },
-            previousDateRecord(){
-                router.push(`/record/${this.previousDate}`)
-            }
+            // previousDateRecord(){
+            //     router.push(`/record/${this.previousDate}`)
+            // }
         }
     }
 </script>
