@@ -2,7 +2,8 @@
     <div>
         <p>this is the calendar.</p>
         <DatePicker 
-            v-model="date" 
+            v-model="selectedDate.date" 
+            ref="datepicker"
             inline
             dark
             autoApply 
@@ -17,9 +18,9 @@
             :monthChangeOnScroll="false"
             menuClassName="dp-custom-menu">
         </DatePicker>
-        <h3 v-if="date">selected date:</h3>
-        <h2 v-if="date"  id="selected-date">{{ date.toDateString().toLowerCase() }}</h2>
-        <ViewDate v-if="date"/>
+        <h3 v-if="selectedDate.date">selected date:</h3>
+        <h2 v-if="selectedDate.date"  id="selected-date">{{ selectedDate.date.toDateString().toLowerCase() }}</h2>
+        <ViewDate v-if="selectedDate.date"/>
     </div>
 </template>
 
@@ -34,20 +35,20 @@ import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss';
         props: ['currentDate'],
         data() {
             return {
-                date: null,
+                selectedDate: {
+                    date: null
+                }
             }
         },
         mounted() {
-            this.emitSelectedDate()
+            this.getSelectedDate()
         },
         methods: {
             viewDate(){
                 router.push('/view-date')
             },
-            emitSelectedDate(){
-                if(this.date){
-                    this.$emit('storeDate', this.date)
-                }
+            getSelectedDate(){
+                console.log(this.selectedDate.date)
             }
         }
     }

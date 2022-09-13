@@ -11,15 +11,9 @@ import CalendarView from '../components/CalendarView.vue';
     export default {
     name: "RecallPage",
     components: { CalendarView },
-    props: ['selectedDate'],
+    props: ['currentUser','currentDate'],
     data: () => ({
-        storedDate: null
-    }),
-    methods: {
-        storeDate(date) {
-            this.storedDate = date
-            this.$emit('selectDate', this.storedDate)
-        }
-    }
+        
+    })
 }
 </script>

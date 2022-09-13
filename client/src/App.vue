@@ -21,12 +21,17 @@
         currentDate: new Date()
       }
     },
+    mounted() {
+        this.todaysDate()
+    },
     methods: {
       logUser(user) {
         this.currentUser = user
         console.log(this.currentUser)
+      },
+      todaysDate() {
+        console.log(this.currentDate)
       }
     }
   }
 </script>
-

@@ -7,23 +7,21 @@
                     name="username"
                     type="text"
                     :value="formData.username"
-                    v-model="formData.username"
                     v-on:input="handleFormChange"/> 
                 <input
-                    name="currentPassword"
-                    type="currentPassword"
+                    name="password"
+                    type="password"
                     v-model="formData.password"
                     v-on:input="handleFormChange"/>
                 <input
                     name="email"
                     type="text"
                     placeholder="email address"
-                    v-model="formData.email"
+                    :value="formData.email"
                     v-on:input="handleFormChange"/>
                 <select
                     name="gender"
                     :value="formData.gender"
-                    v-model="formData.gender"
                     v-on:change="handleFormChange">
                     <option disabled value="">select</option>
                     <option value="female">female</option>
@@ -42,6 +40,7 @@
 import axios from 'axios'
     export default {
         name: 'UpdateAccount',
+        props: ['users', 'currentUser'],
         data: () => ({
             formData: {
                 username: this.currentUser.username,
@@ -51,7 +50,6 @@ import axios from 'axios'
             },
             updatedUser: null
         }),
-        props: ['users', 'currentUser'],
         methods: {
             handleSubmit(e) {
                 e.preventDefault()
@@ -67,6 +65,9 @@ import axios from 'axios'
                 this.updatedUser = res.data
                 console.log(this.updatedUser)
                 this.$emit('logUser', this.updatedUser)
+            },
+            whoIsCurrentUser() {
+                console.log(this.currentUser)
             }
         }
     }

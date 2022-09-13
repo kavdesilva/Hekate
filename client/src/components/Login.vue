@@ -38,7 +38,6 @@ import axios from 'axios'
         methods: {
             handleSubmit(e) {
                 e.preventDefault()
-                alert('form submitted')
                 this.getUser()
             },
             handleFormChange(e) {

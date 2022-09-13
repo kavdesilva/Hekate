@@ -56,7 +56,6 @@ import router from '@/router'
         methods: {
             handleSubmit(e) {
                 e.preventDefault()
-                alert('form submitted')
                 this.createUser()
             },
             handleFormChange(e) {
