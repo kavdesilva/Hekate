@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>record.</h1>
-        <CurrentDate v-if="!selectedDate"/>
+        <CurrentDate v-if="!selectedDate" :currentDate="currentDate"/>
         <PreviousDate v-else/>
     </div>
 </template>

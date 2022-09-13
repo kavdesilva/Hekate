@@ -30,7 +30,7 @@
         console.log(this.currentUser)
       },
       todaysDate() {
-        console.log(this.currentDate)
+        console.log(this.C)
       }
     }
   }
