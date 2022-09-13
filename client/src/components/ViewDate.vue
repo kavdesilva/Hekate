@@ -16,11 +16,11 @@ import router from '@/router'
         methods: {
             createNewRecord(){
                 let selected = this.selectedDate.date.toISOString().slice(0, 10)
-                if (this.currentDate != selected){
+                if (this.currentDate == selected){
+                    router.push(`/record/${this.currentDate}`)
+                } else {
                     this.previousDate = selected
                     router.push(`/record/${this.previousDate}`)
-                } else {
-                    router.push(`/record/${this.currentDate}`)
                 }
             }
         }
