@@ -2,7 +2,7 @@
     <div>
         <div className="record-form-container">
             <h2>current date:</h2>
-            <form>
+            <form v-on:submit="handleSubmit">
                 <!-- flow -->
                 <section className="flow">
                     <p>flow:</p>
@@ -123,6 +123,7 @@
 <script>
     export default {
         name: 'CurrentDate',
+        props: ['currentDate', 'addRecord', 'currentUser'],
         data: () => ({
             formData: {
                 flow: '',
@@ -137,6 +138,7 @@
             },
             handleFormSubmit (e) {
                 e.preventDefault()
+                this.$emit('addRecord', this.currentDate, this.currentUser.id, this.formdata)
             }
         }
     }
