@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>record.</h1>
-        <CurrentDate v-if="selectedDate"/>
+        <CurrentDate v-if="!selectedDate"/>
         <PreviousDate v-else/>
     </div>
 </template>
@@ -10,9 +10,16 @@
 import CurrentDate from '../components/CurrentDate.vue';
 import PreviousDate from '../components/PreviousDate.vue';
     export default {
-    name: "RecordPage",
-    components: { CurrentDate, PreviousDate },
-    props: ['selectedDate'],
-
+        name: "RecordPage",
+        components: { CurrentDate, PreviousDate },
+        props: ['currentDate', 'selectedDate'],
+        mounted() {
+            this.todaysDate()
+        },
+        methods: {
+            todaysDate() {
+                console.log(this.currentDate)
+            }
+        }
     }
 </script>

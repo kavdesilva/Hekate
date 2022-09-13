@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import router from '@/router'
 import ViewDate from '../components/ViewDate.vue'
 import DatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss';
@@ -40,13 +39,7 @@ import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss';
                 }
             }
         },
-        mounted() {
-            this.getSelectedDate()
-        },
         methods: {
-            viewDate(){
-                router.push('/view-date')
-            },
             getSelectedDate(){
                 console.log(this.selectedDate.date)
             }
