@@ -108,9 +108,10 @@
                 </section><br/>
                 <!-- notes -->
                 <section>
-                    <label for="notes">notes:</label><br/>
+                    <p>notes:</p>
                     <textarea
                         name="notes"
+                        placeholder="notes go here."
                         v-model="formData.notes"
                         v-on:input="handleFormChange"></textarea>
                 </section>
@@ -146,8 +147,8 @@ let db = new Localbase('db')
             },
             addRecord() {
                 this.newRecord = {
-                    id: Date.now(),
-                    userId: this.currentUser.id,
+                    date: this.currentDate.toString(),
+                    // userId: this.currentUser.id,
                     flow: this.formData.flow,
                     symptoms: this.formData.symptoms,
                     mood: this.formData.mood,

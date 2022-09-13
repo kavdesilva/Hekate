@@ -2,7 +2,7 @@
   <div id="app">
     <header>
       <img src="./assets/hekates_wheel2.jpeg" id="hekate-logo"/>
-      <NavBar />
+      <NavBar :currentUser="currentUser" />
     </header>
     <main>
       <router-view :currentUser="currentUser" :currentDate="currentDate" @logUser="logUser"/>

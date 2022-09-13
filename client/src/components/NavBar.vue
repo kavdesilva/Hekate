@@ -1,16 +1,16 @@
 <template>
     <nav>
-      <router-link to="/">home</router-link>
-      <router-link to="/record">record</router-link>
-      <router-link to="/recall">recall</router-link>
-      <router-link to="/reflect">reflect</router-link>
-      <!-- <router-link to="/delete">delete</router-link> -->
+      <router-link v-if="currentUser" to="/">home</router-link>
+      <router-link v-if="currentUser" to="/record">record</router-link>
+      <router-link v-if="currentUser" to="/recall">recall</router-link>
+      <router-link v-if="currentUser" to="/reflect">reflect</router-link>
     </nav>
 </template>
 
 <script>
   export default {
-    name: 'NavBar'
+    name: 'NavBar',
+    props: ['currentUser']
   }
 </script>
 
