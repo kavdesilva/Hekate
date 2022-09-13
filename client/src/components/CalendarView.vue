@@ -20,7 +20,7 @@
         </DatePicker>
         <h3 v-if="selectedDate.date">selected date:</h3>
         <h2 v-if="selectedDate.date"  id="selected-date">{{ selectedDate.date.toDateString().toLowerCase() }}</h2>
-        <ViewDate v-if="selectedDate.date" :currentDate="currentDate"/>
+        <ViewDate v-if="selectedDate.date" :currentDate="currentDate" :selectedDate="selectedDate" />
     </div>
 </template>
 
