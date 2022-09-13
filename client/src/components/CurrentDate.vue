@@ -2,7 +2,7 @@
     <div>
         <div className="record-form-container">
             <h2>current date:</h2>
-            <form v-on:submit="handleSubmit">
+            <form v-on:submit="handleFormSubmit">
                 <!-- flow -->
                 <section className="flow">
                     <p>flow:</p>
@@ -121,16 +121,20 @@
 </template>
 
 <script>
+import Localbase from 'localbase'
+let db = new Localbase('db')
     export default {
         name: 'CurrentDate',
-        props: ['currentDate', 'addRecord', 'currentUser'],
+        props: ['currentDate', 'currentUser'],
         data: () => ({
             formData: {
                 flow: '',
                 symptoms: [],
                 mood: '',
                 notes: ''
-            }
+            },
+            newRecord: null,
+            records: []
         }),
         methods: {
             handleFormChange(e) {
@@ -138,7 +142,21 @@
             },
             handleFormSubmit (e) {
                 e.preventDefault()
-                this.$emit('addRecord', this.currentDate, this.currentUser.id, this.formdata)
+                this.addRecord()
+            },
+            addRecord() {
+                this.newRecord = {
+                    id: Date.now(),
+                    userId: this.currentUser.id,
+                    flow: this.formData.flow,
+                    symptoms: this.formData.symptoms,
+                    mood: this.formData.mood,
+                    notes: this.formData.notes
+                }
+                this.records.push(this.newRecord)
+                console.log(this.records)
+                db.collection('records').add(this.newRecord)
+                alert('record submitted')
             }
         }
     }
