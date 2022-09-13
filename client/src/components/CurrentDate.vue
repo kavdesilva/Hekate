@@ -134,7 +134,6 @@ let db = new Localbase('db')
                 mood: '',
                 notes: ''
             },
-            newRecord: null,
             records: []
         }),
         methods: {
@@ -146,17 +145,17 @@ let db = new Localbase('db')
                 this.addRecord()
             },
             addRecord() {
-                this.newRecord = {
-                    date: this.currentDate.toString(),
-                    // userId: this.currentUser.id,
+                let newRecord = {
+                    id: this.currentDate,
+                    // userId: this.currentUser.id.toString(),
                     flow: this.formData.flow,
                     symptoms: this.formData.symptoms,
                     mood: this.formData.mood,
                     notes: this.formData.notes
                 }
-                this.records.push(this.newRecord)
-                console.log(this.records)
-                db.collection('records').add(this.newRecord)
+                this.records.push(newRecord)
+                console.log(newRecord)
+                db.collection('records').add(newRecord)
                 alert('record submitted')
             }
         }
