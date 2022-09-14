@@ -19,7 +19,7 @@
                 menuClassName="dp-custom-menu">
             </DatePicker>
             <h3 v-if="selectedDate.date">selected date:</h3>
-            <h2 v-if="selectedDate.date"  id="selected-date">{{ selectedDate.date.toDateString().toLowerCase() }}</h2>
+            <h2 v-if="selectedDate.date"  className="selected-date">{{ selectedDate.date.toDateString().toLowerCase() }}</h2>
             <ViewDate v-if="selectedDate.date" 
                 :currentDate="currentDate" 
                 :selectedDate="selectedDate" :previousDateSelected="previousDateSelected" @showPreviousDateForm="showPreviousDateForm"/>
@@ -103,9 +103,6 @@ import PreviousDate from './PreviousDate.vue';
     .dp__button_bottom:hover {
         background-color: black;
         filter: brightness(70%);
-    }
-    #selected-date {
-        color: darkred;
     }
     .dp__icon:hover {
         stroke: darkred;

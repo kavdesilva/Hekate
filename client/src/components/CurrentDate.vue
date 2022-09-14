@@ -1,7 +1,7 @@
 <template>
     <div>
         <div className="record-form-container">
-            <h2>current date: {{currentDate.toDateString().toLowerCase()}}</h2>
+            <h2 className="selected-date">{{currentDate.toDateString().toLowerCase()}}</h2>
             <form v-on:submit="handleFormSubmit">
                 <!-- flow -->
                 <section className="flow">
