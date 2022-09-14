@@ -32,13 +32,13 @@ ___
 
 ### _Component Heirarchy Diagram (CHD)_
 
-![Image](assets/Hekate_CHD_v.3.png)
+![Image](assets/Hekate_CHD_v.4.png)
 
 ---
 
 ### _Entity Relationship Diagram (ERD)_
 
-![Image](assets/Hekate_ERD_v.2.png)
+![Image](assets/Hekate_ERD_v.3.png)
 
 ---
 
@@ -53,18 +53,22 @@ ___
 
 - [x] README.md
 - [x] Trello Board
-- [ ] Wireframes
 - [x] ERD
 - [x] CHD
+- [x] IndexedDB Client-Side Storage
 - [ ] Heroku Deployment
-- [ ] TBD
+- [ ] LocalDB Token Auth
 
 ### _Post-MVP_
 
-- [ ] TBD
+- [ ] Encryption of Client-Side/Server-Side DBs
+- [ ] Algorithms for Cycle Patterns
+- [ ] Responsive Layout for Mobile
 
 ---
 
 ### _Credits_
 
-#### []()
+#### [localbase - Github](https://github.com/dannyconnell/localbase)
+#### [Vuepic Datepicker - Github](https://github.com/Vuepic/vue-datepicker)
+#### [Vice - 'The Strange Sexism of Period Apps,' by Miranda Hall](https://www.vice.com/en/article/qvp5yd/the-strange-sexism-of-period-apps)

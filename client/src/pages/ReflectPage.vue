@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>reflect.</h1>
-        <p>number of cycles recorded: {{records.length}}</p>
+        <p>cycles recorded to date: {{records.length}}</p>
     </div>
 </template>
 
@@ -12,7 +12,8 @@ let db = new Localbase('db')
         name: 'ReflectPage',
         props: ['currentUser'],
         data: () => ({
-            records: []
+            records: [],
+            recordsThisMonth: []
         }),
         mounted() {
             this.getAllRecords()
@@ -20,7 +21,12 @@ let db = new Localbase('db')
         methods: {
             getAllRecords(){
                 this.records.push(db.collection(`${this.currentUser.username}-records`).get())
-            }
+            },
+            // getCurrentMonth() {
+            //     let currentMonth = null
+            //     this.records.map((record) => {
+            //         // map records for each record with date matching current month/year
+            // }
         }
     }
 </script>
