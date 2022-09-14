@@ -1,7 +1,6 @@
 <template>
     <div>
         <div v-if="!previousDateSelected">
-            <p>this is the calendar.</p>
             <DatePicker 
                 v-model="selectedDate.date" 
                 ref="datepicker"
@@ -21,9 +20,11 @@
             </DatePicker>
             <h3 v-if="selectedDate.date">selected date:</h3>
             <h2 v-if="selectedDate.date"  id="selected-date">{{ selectedDate.date.toDateString().toLowerCase() }}</h2>
-            <ViewDate v-if="selectedDate.date" :currentDate="currentDate" :selectedDate="selectedDate" :previousDateSelected="previousDateSelected" @showPreviousDateForm="showPreviousDateForm"/>
+            <ViewDate v-if="selectedDate.date" 
+                :currentDate="currentDate" 
+                :selectedDate="selectedDate" :previousDateSelected="previousDateSelected" @showPreviousDateForm="showPreviousDateForm"/>
         </div>
-        <PreviousDate v-else :selectedDate="selectedDate.date"/>
+        <PreviousDate v-else :selectedDate="selectedDate.date" :currentUser="currentUser"/>
     </div>
 </template>
 
@@ -35,7 +36,7 @@ import PreviousDate from './PreviousDate.vue';
     export default {
         name: 'CalendarView',
         components: { DatePicker, ViewDate, PreviousDate },
-        props: ['currentDate'],
+        props: ['currentDate', 'currentUser'],
         data() {
             return {
                 selectedDate: {

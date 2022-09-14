@@ -20,7 +20,7 @@
     data: () => {
       return {
         currentUser: null,
-        currentDate: new Date().toISOString().slice(0, 10)
+        currentDate: new Date()
       }
     },
     mounted() {

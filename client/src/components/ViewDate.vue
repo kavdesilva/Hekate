@@ -17,8 +17,9 @@ import router from '@/router'
         methods: {
             createNewRecord(){
                 let selected = this.selectedDate.date.toISOString().slice(0, 10)
-                if (this.currentDate == selected){
-                    router.push(`/record/${this.currentDate}`)
+                let current = this.currentDate.toISOString().slice(0, 10)
+                if (current == selected){
+                    router.push(`/record/${current}`)
                 } else {
                     this.previousDate = selected
                     this.formValue = 1

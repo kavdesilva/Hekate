@@ -1,7 +1,7 @@
 <template>
     <div>
         <div className="record-form-container">
-            <h2>current date:</h2>
+            <h2>current date: {{currentDate.toDateString().toLowerCase()}}</h2>
             <form v-on:submit="handleFormSubmit">
                 <!-- flow -->
                 <section className="flow">
@@ -136,9 +136,6 @@ let db = new Localbase('db')
             },
             records: []
         }),
-        mounted() {
-            this.getUserId()
-        },
         methods: {
             handleFormChange(e) {
                 this[e.target.name] = e.target.value
@@ -149,7 +146,7 @@ let db = new Localbase('db')
             },
             addRecord() {
                 let newRecord = {
-                    id: this.currentDate,
+                    id: this.currentDate.toISOString().slice(0, 10),
                     userId: this.currentUser.id,
                     flow: this.formData.flow,
                     symptoms: this.formData.symptoms,
@@ -160,9 +157,6 @@ let db = new Localbase('db')
                 console.log(newRecord)
                 db.collection('records').add(newRecord)
                 alert('record submitted')
-            }, 
-            getUserId() {
-                console.log(this.currentUser.id)
             }
         }
     }

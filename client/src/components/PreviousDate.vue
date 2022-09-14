@@ -1,8 +1,8 @@
 <template>
     <div>
         <div className="record-form-container">
-            <h2>previous date:</h2>
-            <form>
+            <h2>previous date: {{selectedDate.toDateString().toLowerCase()}}</h2>
+            <form v-on:submit="handleFormSubmit">
                 <!-- flow -->
                 <section className="flow">
                     <p>flow:</p>
@@ -108,9 +108,10 @@
                 </section><br/>
                 <!-- notes -->
                 <section>
-                    <label for="notes">notes:</label><br/>
+                    <p>notes:</p>
                     <textarea
                         name="notes"
+                        placeholder="notes go here."
                         v-model="formData.notes"
                         v-on:input="handleFormChange"></textarea>
                 </section>
@@ -121,15 +122,19 @@
 </template>
 
 <script>
+import Localbase from 'localbase'
+let db = new Localbase('db')
     export default {
         name: 'PreviousDate',
+        props: ['selectedDate', 'currentUser'],
         data: () => ({
             formData: {
                 flow: '',
                 symptoms: [],
                 mood: '',
                 notes: ''
-            }
+            },
+            records: []
         }),
         methods: {
             handleFormChange(e) {
@@ -137,6 +142,21 @@
             },
             handleFormSubmit (e) {
                 e.preventDefault()
+                this.addRecord()
+            },
+            addRecord(){
+                let newRecord = {
+                    id: this.selectedDate.toISOString().slice(0, 10),
+                    userId: this.currentUser.id,
+                    flow: this.formData.flow,
+                    symptoms: this.formData.symptoms,
+                    mood: this.formData.mood,
+                    notes: this.formData.notes
+                }
+                this.records.push(newRecord)
+                console.log(newRecord)
+                db.collection('records').add(newRecord)
+                alert('record submitted')
             }
         }
     }
