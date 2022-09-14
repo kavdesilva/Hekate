@@ -154,7 +154,7 @@ let db = new Localbase('db')
                     mood: this.formData.mood,
                     notes: this.formData.notes
                 }))
-                db.collection('records').add(newRecord)
+                db.collection(`${this.currentUser.username}-records`).add(newRecord)
                 alert('record submitted')
             },
             updateRecord() {
@@ -167,14 +167,14 @@ let db = new Localbase('db')
                     notes: this.formData.notes
                 }))
                 if (
-                    db.collection('records').doc({ date: `${this.selectedDate.toISOString().slice(0, 10)}` }).get()
+                    db.collection(`${this.currentUser.username}-records`).doc({ date: `${this.selectedDate.toISOString().slice(0, 10)}` }).get()
                 ){
-                    db.collection('records').set(recordUpdate)
+                    db.collection(`${this.currentUser.username}-records`).set(recordUpdate)
                 }
             },
             deleteRecord() {
                 if (confirm(`are you sure you want to delete record for ${this.selectedDate.toDateString().toLowerCase()}?`)){
-                    db.collection('records').doc({ date: `${this.selectedDate.toISOString().slice(0, 10)}`}).delete()
+                    db.collection(`${this.currentUser.username}-records`).doc({ date: `${this.selectedDate.toISOString().slice(0, 10)}`}).delete()
                 } else {
                     return
                 }
