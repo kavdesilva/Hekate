@@ -153,9 +153,13 @@ let db = new Localbase('db')
                     mood: this.formData.mood,
                     notes: this.formData.notes
                 }))
-                this.records.push(newRecord)
-                console.log(newRecord)
-                db.collection('records').add(newRecord)
+                if (
+                    db.collection('records').doc({ date: `${this.currentDate.toISOString().slice(0, 10)}` }).get()
+                ){
+                    db.collection('records').set(newRecord)
+                } else {
+                    db.collection('records').add(newRecord)
+                }
                 alert('record submitted')
             }
         }
