@@ -115,8 +115,10 @@
                         v-model="formData.notes"
                         v-on:input="handleFormChange"></textarea>
                 </section>
-                <button type="submit">submit</button>
+                <button type="submit">add</button>
             </form>
+            <button v-on:click="updateRecord">update</button>
+            <button v-on:click="deleteRecord">delete</button>
         </div>
     </div>
 </template>
@@ -133,8 +135,7 @@ let db = new Localbase('db')
                 symptoms: [],
                 mood: '',
                 notes: ''
-            },
-            records: []
+            }
         }),
         methods: {
             handleFormChange(e) {
@@ -144,8 +145,20 @@ let db = new Localbase('db')
                 e.preventDefault()
                 this.addRecord()
             },
-            addRecord(){
+            addRecord() {
                 let newRecord = JSON.parse(JSON.stringify({
+                    date: this.selectedDate.toISOString().slice(0, 10),
+                    userId: this.currentUser.id,
+                    flow: this.formData.flow,
+                    symptoms: this.formData.symptoms,
+                    mood: this.formData.mood,
+                    notes: this.formData.notes
+                }))
+                db.collection('records').add(newRecord)
+                alert('record submitted')
+            },
+            updateRecord() {
+                let recordUpdate = JSON.parse(JSON.stringify({
                     date: this.selectedDate.toISOString().slice(0, 10),
                     userId: this.currentUser.id,
                     flow: this.formData.flow,
@@ -155,12 +168,16 @@ let db = new Localbase('db')
                 }))
                 if (
                     db.collection('records').doc({ date: `${this.selectedDate.toISOString().slice(0, 10)}` }).get()
-                    ){
-                    db.collection('records').set(newRecord)
-                } else {
-                    db.collection('records').add(newRecord)
+                ){
+                    db.collection('records').set(recordUpdate)
                 }
-                alert('record submitted')
+            },
+            deleteRecord() {
+                if (confirm(`are you sure you want to delete record for ${this.selectedDate.toDateString().toLowerCase()}?`)){
+                    db.collection('records').doc({ date: `${this.selectedDate.toISOString().slice(0, 10)}`}).delete()
+                } else {
+                    return
+                }
             }
         }
     }

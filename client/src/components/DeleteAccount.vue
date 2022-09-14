@@ -17,7 +17,7 @@ import router from '@/router'
             deletedUser: null
         }),
         methods: {
-            deleteRecord() {}, // delete client-side data
+            deleteAllRecords() {}, // delete client-side data
             async deleteAccount() {
                 if (confirm(`are you sure you want to delete ${this.currentUser.username}'s account? this action is irreversible.`) == true) {
                     await axios.delete(`http://localhost:3001/api/users/${this.currentUser.id}`, this.currentUser)
