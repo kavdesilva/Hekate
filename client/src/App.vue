@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <header>
-      <img src="./assets/hekates_wheel2.jpeg" id="hekate-logo"/>
+      <router-link to="/">
+        <img src="./assets/hekates_wheel2.jpeg" id="hekate-logo"/>
+      </router-link>
       <NavBar :currentUser="currentUser" />
     </header>
     <main>
