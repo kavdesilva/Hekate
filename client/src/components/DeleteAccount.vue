@@ -20,7 +20,7 @@ let db = new Localbase('db')
         }),
         methods: {
             deleteAllRecords() {
-                db.collection('records').delete()
+                db.collection(`${this.currentUser.username}-records`).delete()
             }, 
             async deleteAccount() {
                 if (confirm(`are you sure you want to delete ${this.currentUser.username}'s account? this action is irreversible.`) == true) {
