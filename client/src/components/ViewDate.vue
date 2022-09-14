@@ -1,19 +1,25 @@
 <template>
     <div>
-        <p>this is a detailed view of the selected day's record. there will be a button that directs you to add, update or delete the record of selected day.</p>
+        <p>flow {{selectedRecord.flow}}</p>
         <button v-on:click="createNewRecord">add/update record</button>
     </div>
 </template>
 
 <script>
 import router from '@/router'
+// import Localbase from 'localbase'
+// let db = new Localbase('db')
     export default {
         name: 'ViewDate',
-        props: ['currentDate', 'selectedDate'],
+        props: ['currentDate', 'selectedDate', 'currentUser'],
         data: () => ({
             previousDate: null,
-            formValue: null
+            formValue: null,
+            selectedRecord: null
         }),
+        mounted() {
+            // this.selectedRecord()
+        },
         methods: {
             createNewRecord(){
                 let selected = this.selectedDate.date.toISOString().slice(0, 10)
@@ -26,7 +32,15 @@ import router from '@/router'
                     this.$emit('showPreviousDateForm', this.formValue)
                     router.push(`/recall/${this.previousDate}`)
                 }
-            }
+            },
+                // async getSelectedRecord(){
+                //     try {
+                //         this.selectedRecord = await db.collection(`${this.currentUser.username}-records`).doc({ date: `${this.selectedDate.toISOString().slice(0, 10)}` }).get()
+                //     } catch (error){
+                //         console.log('error:', error)
+                //     }
+                // } 
+            // ***** this didn't work, not sure how to safely 'check' the existence of a record for display on the DOM without breaking app.
         }
     }
 </script>

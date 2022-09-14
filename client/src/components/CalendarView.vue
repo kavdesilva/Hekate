@@ -21,8 +21,11 @@
             <h3 v-if="selectedDate.date">selected date:</h3>
             <h2 v-if="selectedDate.date"  className="selected-date">{{ selectedDate.date.toDateString().toLowerCase() }}</h2>
             <ViewDate v-if="selectedDate.date" 
+                :currentUser="currentUser"
                 :currentDate="currentDate" 
-                :selectedDate="selectedDate" :previousDateSelected="previousDateSelected" @showPreviousDateForm="showPreviousDateForm"/>
+                :selectedDate="selectedDate" 
+                :previousDateSelected="previousDateSelected" 
+                @showPreviousDateForm="showPreviousDateForm"/>
         </div>
         <PreviousDate v-else :selectedDate="selectedDate.date" :currentUser="currentUser"/>
     </div>
