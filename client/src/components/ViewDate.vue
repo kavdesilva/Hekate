@@ -1,7 +1,6 @@
 <template>
     <div>
-        <p>flow {{selectedRecord.flow}}</p>
-        <button v-on:click="createNewRecord">add/update record</button>
+        <p>this is a detailed view of the selected day's record. there will be a button that directs you to add, update or delete the record of selected day.</p>        <button v-on:click="createNewRecord">add/update record</button>
     </div>
 </template>
 
