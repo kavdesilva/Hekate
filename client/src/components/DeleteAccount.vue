@@ -25,6 +25,7 @@ let db = new Localbase('db')
             async deleteAccount() {
                 if (confirm(`are you sure you want to delete ${this.currentUser.username}'s account? this action is irreversible.`) == true) {
                     await axios.delete(`http://localhost:3001/api/users/${this.currentUser.id}`, this.currentUser)
+                    this.deleteAllRecords()
                     alert(`account deleted.`)
                     this.$emit('logUser', this.deletedUser)
                     router.push('/')
