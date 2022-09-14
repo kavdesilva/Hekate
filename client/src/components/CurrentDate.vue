@@ -145,14 +145,14 @@ let db = new Localbase('db')
                 this.addRecord()
             },
             addRecord() {
-                let newRecord = {
-                    id: this.currentDate.toISOString().slice(0, 10),
+                let newRecord = JSON.parse(JSON.stringify({
+                    date: this.currentDate.toISOString().slice(0, 10),
                     userId: this.currentUser.id,
                     flow: this.formData.flow,
                     symptoms: this.formData.symptoms,
                     mood: this.formData.mood,
                     notes: this.formData.notes
-                }
+                }))
                 this.records.push(newRecord)
                 console.log(newRecord)
                 db.collection('records').add(newRecord)

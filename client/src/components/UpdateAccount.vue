@@ -1,6 +1,6 @@
 <!-- <template>
     <div>
-        <p>update</p>
+        <h2>update</h2>
         <div className="form-container">
             <form v-on:submit="handleSubmit">
                 <input
@@ -43,10 +43,10 @@ import axios from 'axios'
         props: ['users', 'currentUser'],
         data: () => ({
             formData: {
-                username: this.currentUser.username,
+                username: this.currentUser?.username,
                 password: '',
-                email: this.currentUser.email,
-                gender: this.currentUser.gender
+                email: this.currentUser?.email,
+                gender: this.currentUser?.gender
             },
             updatedUser: null
         }),
@@ -60,8 +60,7 @@ import axios from 'axios'
                 this[e.target.name] = e.target.value
             },
             async updateUser() {
-                const res = await axios.put(`http://localhost:3001/api/users/${this.$props.currentUser.id}`, this.formData)
-                // if formData.password === this.currentUser.password, then >>
+                const res = await axios.put(`http://localhost:3001/api/users/${this.currentUser.id}`, this.formData)
                 this.updatedUser = res.data
                 console.log(this.updatedUser)
                 this.$emit('logUser', this.updatedUser)
