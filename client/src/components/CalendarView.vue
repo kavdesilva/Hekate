@@ -1,26 +1,29 @@
 <template>
     <div>
-        <p>this is the calendar.</p>
-        <DatePicker 
-            v-model="selectedDate.date" 
-            ref="datepicker"
-            inline
-            dark
-            autoApply 
-            id="calendar" 
-            monthNameFormat="long" 
-            showNowButton 
-            hideOffsetDates
-            nowButtonLabel="today"
-            :maxDate="new Date()"
-            :enableTimePicker="false"
-            :dayNames="['m', 'tu', 'w', 'th', 'f', 'sa', 'su']"
-            :monthChangeOnScroll="false"
-            menuClassName="dp-custom-menu">
-        </DatePicker>
-        <h3 v-if="selectedDate.date">selected date:</h3>
-        <h2 v-if="selectedDate.date"  id="selected-date">{{ selectedDate.date.toDateString().toLowerCase() }}</h2>
-        <ViewDate v-if="selectedDate.date" :currentDate="currentDate" :selectedDate="selectedDate" />
+        <div v-if="!previousDateSelected">
+            <p>this is the calendar.</p>
+            <DatePicker 
+                v-model="selectedDate.date" 
+                ref="datepicker"
+                inline
+                dark
+                autoApply 
+                id="calendar" 
+                monthNameFormat="long" 
+                showNowButton 
+                hideOffsetDates
+                nowButtonLabel="today"
+                :maxDate="new Date()"
+                :enableTimePicker="false"
+                :dayNames="['m', 'tu', 'w', 'th', 'f', 'sa', 'su']"
+                :monthChangeOnScroll="false"
+                menuClassName="dp-custom-menu">
+            </DatePicker>
+            <h3 v-if="selectedDate.date">selected date:</h3>
+            <h2 v-if="selectedDate.date"  id="selected-date">{{ selectedDate.date.toDateString().toLowerCase() }}</h2>
+            <ViewDate v-if="selectedDate.date" :currentDate="currentDate" :selectedDate="selectedDate" :previousDateSelected="previousDateSelected" @showPreviousDateForm="showPreviousDateForm"/>
+        </div>
+        <PreviousDate v-else :selectedDate="selectedDate.date"/>
     </div>
 </template>
 
@@ -28,20 +31,28 @@
 import ViewDate from '../components/ViewDate.vue'
 import DatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss';
+import PreviousDate from './PreviousDate.vue';
     export default {
         name: 'CalendarView',
-        components: { DatePicker, ViewDate },
+        components: { DatePicker, ViewDate, PreviousDate },
         props: ['currentDate'],
         data() {
             return {
                 selectedDate: {
                     date: null
-                }
+                },
+                previousDateSelected: null
             }
         },
+        mounted() {
+            this.resetRecallPage()
+        },
         methods: {
-            getSelectedDate(){
-                console.log(this.selectedDate.date)
+            showPreviousDateForm(value) {
+                this.previousDateSelected = value
+            },
+            resetRecallPage() {
+                this.previousDateSelected = null
             }
         }
     }

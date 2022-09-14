@@ -8,7 +8,7 @@ import UpdateAccount from './components/UpdateAccount'
 import SignUp from './components/SignUp.vue'
 import LogIn from './components/LogIn.vue'
 import CurrentDate from './components/CurrentDate'
-// import PreviousDate from './components/PreviousDate'
+import PreviousDate from './components/PreviousDate'
 
 const routes = [
     {path: '/', component: HomePage, name: 'HomePage', 
@@ -18,10 +18,12 @@ const routes = [
       ]},
     {path: '/record', component: RecordPage, name: 'RecordPage',
       children: [
-        {path: '/record/:date', component: CurrentDate, name: 'CurrentDate'},
-        // {path: '/record/:date', component: PreviousDate, name: 'PreviousDate'}
+        {path: '/record/:date', component: CurrentDate, name: 'CurrentDate'}
       ]},
-    {path: '/recall', component: RecallPage, name: 'RecallPage'},
+    {path: '/recall', component: RecallPage, name: 'RecallPage',
+      children: [
+        {path: '/recall/:date', component: PreviousDate, name: 'PreviousDate'}
+      ]},
     {path: '/reflect', component: ReflectPage, name: 'ReflectPage'},
     {path: '/delete', component: DeleteAccount, name: 'DeleteAccount'},
     {path: '/update', component: UpdateAccount, name: 'UpdateAccount'}

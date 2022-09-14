@@ -11,7 +11,8 @@ import router from '@/router'
         name: 'ViewDate',
         props: ['currentDate', 'selectedDate'],
         data: () => ({
-            previousDate: null
+            previousDate: null,
+            formValue: null
         }),
         methods: {
             createNewRecord(){
@@ -20,7 +21,9 @@ import router from '@/router'
                     router.push(`/record/${this.currentDate}`)
                 } else {
                     this.previousDate = selected
-                    router.push(`/record/${this.previousDate}`)
+                    this.formValue = 1
+                    this.$emit('showPreviousDateForm', this.formValue)
+                    router.push(`/recall/${this.previousDate}`)
                 }
             }
         }
