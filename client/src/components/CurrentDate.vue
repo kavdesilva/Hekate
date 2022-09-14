@@ -173,7 +173,11 @@ let db = new Localbase('db')
                 }
             },
             deleteRecord() {
-
+                if (confirm(`are you sure you want to delete record for ${this.currentDate.toDateString().toLowerCase()}?`)){
+                    db.collection('records').doc({ date: `${this.currentDate.toISOString().slice(0, 10)}`}).delete()
+                } else {
+                    return
+                }
             }
         }
     }
