@@ -1,6 +1,7 @@
 const { User } = require('../models')
 const middleware = require('../middleware')
 
+// User general application controller
 const getUsers = async (req, res) => {
     try {
         const users = await User.findAll()
@@ -43,6 +44,7 @@ const deleteAccount = async (req, res) => {
     }
 }
 
+// Authentication/Authorization Controller
 const login = async (req, res) => {
     try {
         const user = await User.findOne({

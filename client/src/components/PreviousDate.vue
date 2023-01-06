@@ -1,114 +1,113 @@
 <template>
     <div>
         <div className="record-form-container">
-            <h2 className="selected-date">{{selectedDate.toDateString().toLowerCase()}}</h2>
+            <h2 className="selected-date">{{selectedDate.toUTCString().slice(5, 16).toLowerCase()}}</h2>
             <form v-on:submit="handleFormSubmit">
                 <!-- flow -->
+                <p>flow:</p>
                 <section className="flow">
-                    <p>flow:</p>
-                    <input 
+                    <label for="light">
+                        <input 
                         type="radio" 
                         name="light" 
                         value="light"
                         v-model="formData.flow"
-                        v-on:change="handleFormChange"/>
-                    <label for="light">light</label>
-                    <input 
+                        v-on:change="handleFormChange"/>light</label>
+                    <label for="medium">
+                        <input 
                         type="radio" 
                         name="medium" 
                         value="medium" 
                         v-model="formData.flow"
-                        v-on:change="handleFormChange"/>
-                    <label for="medium">medium</label>
-                    <input 
+                        v-on:change="handleFormChange"/>medium</label>
+                    <label for="heavy">
+                        <input 
                         type="radio" 
                         name="heavy" 
                         value="heavy" 
                         v-model="formData.flow"
-                        v-on:change="handleFormChange"/>
-                    <label for="heavy">heavy</label>
-                    <input 
+                        v-on:change="handleFormChange"/>heavy</label>
+                    <label for="spotting">
+                        <input 
                         type="radio" 
                         name="spotting" 
                         value="spotting" 
                         v-model="formData.flow"
-                        v-on:change="handleFormChange"/>
-                    <label for="spotting">spotting</label>
+                        v-on:change="handleFormChange"/>spotting</label>
                 </section>
                 <!-- symptoms -->
+                <p>symptoms:</p>
                 <section className="symptoms">
-                    <p>symptoms:</p>
-                    <input 
+                    <label for="cramps">
+                        <input 
                         type="checkbox" 
                         name="cramps" 
                         value="cramps" 
                         v-model="formData.symptoms"
-                        v-on:change="handleFormChange"/>
-                    <label for="cramps">cramps</label>
-                    <input 
+                        v-on:change="handleFormChange"/>cramps</label>
+                    <label for="headache">
+                        <input 
                         type="checkbox" 
                         name="headache" 
                         value="headache" 
                         v-model="formData.symptoms"
-                        v-on:change="handleFormChange"/>
-                    <label for="headache">headache</label>
-                    <input 
+                        v-on:change="handleFormChange"/>headache</label>
+                    <label for="fatigue">
+                        <input 
                         type="checkbox" 
                         name="fatigue" 
                         value="fatigue" 
                         v-model="formData.symptoms"
-                        v-on:change="handleFormChange"/>
-                    <label for="fatigue">fatigue</label>
-                    <input 
+                        v-on:change="handleFormChange"/>fatigue</label>
+                    <label for="tenderness">
+                        <input 
                         type="checkbox" 
                         name="tenderness" 
                         value="tenderness" 
                         v-model="formData.symptoms"
-                        v-on:change="handleFormChange"/>
-                    <label for="tenderness">tenderness</label>
-                    <input 
+                        v-on:change="handleFormChange"/>tenderness</label>
+                    <label for="bloated">
+                        <input 
                         type="checkbox" 
                         name="bloated" 
                         value="bloated" 
                         v-model="formData.symptoms"
-                        v-on:change="handleFormChange"/>
-                    <label for="bloated">bloated</label>
+                        v-on:change="handleFormChange"/>bloated</label>
                 </section>
                 <!-- mood -->
+                <p>mood:</p>
                 <section>
-                    <p>mood:</p>
-                    <input 
+                    <label for="happy">
+                        <input 
                         type="radio" 
                         name="happy" 
                         value="happy" 
                         v-model="formData.mood"
-                        v-on:change="handleFormChange"/>
-                    <label for="happy">happy</label>
-                    <input 
+                        v-on:change="handleFormChange"/>happy</label>
+                    <label for="content">
+                        <input 
                         type="radio" 
                         name="content" 
                         value="content" 
                         v-model="formData.mood"
-                        v-on:change="handleFormChange"/>
-                    <label for="content">content</label>
-                    <input 
+                        v-on:change="handleFormChange"/>content</label>
+                    <label for="sad"><input 
                         type="radio" 
                         name="sad" 
                         value="sad" 
                         v-model="formData.mood"
-                        v-on:change="handleFormChange"/>
-                    <label for="sad">sad</label>
-                    <input 
+                        v-on:change="handleFormChange"/>sad</label>
+                    <label for="frustrated">
+                        <input 
                         type="radio" 
                         name="frustrated" 
                         value="frustrated" 
                         v-model="formData.mood"
-                        v-on:change="handleFormChange"/>
-                    <label for="frustrated">frustrated</label>
+                        v-on:change="handleFormChange"/>frustrated</label>
                 </section><br/>
                 <!-- notes -->
+                <p>notes:</p>
                 <section>
-                    <p>notes:</p>
                     <textarea
                         name="notes"
                         placeholder="notes go here."
@@ -173,7 +172,7 @@ let db = new Localbase('db')
                 }
             },
             deleteRecord() {
-                if (confirm(`are you sure you want to delete record for ${this.selectedDate.toDateString().toLowerCase()}?`)){
+                if (confirm(`are you sure you want to delete record for ${this.selectedDate.toUTCString().slice(5, 16).toLowerCase()}?`)){
                     db.collection(`${this.currentUser.username}-records`).doc({ date: `${this.selectedDate.toISOString().slice(0, 10)}`}).delete()
                 } else {
                     return

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>this is a detailed view of the selected day's record. there will be a button that directs you to add, update or delete the record of selected day.</p>        <button v-on:click="createNewRecord">go to record</button>
+        <button v-on:click="createRecord">go to record</button>
     </div>
 </template>
 
@@ -17,7 +17,7 @@ import router from '@/router'
             selectedRecord: null
         }),
         methods: {
-            createNewRecord(){
+            createRecord(){
                 let selected = this.selectedDate.date.toISOString().slice(0, 10)
                 let current = this.currentDate.toISOString().slice(0, 10)
                 if (current == selected){

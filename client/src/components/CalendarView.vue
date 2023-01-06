@@ -18,8 +18,8 @@
                 :monthChangeOnScroll="false"
                 menuClassName="dp-custom-menu">
             </DatePicker>
-            <h3 v-if="selectedDate.date">selected date:</h3>
-            <h2 v-if="selectedDate.date"  className="selected-date">{{ selectedDate.date.toDateString().toLowerCase() }}</h2>
+            <h2 v-if="selectedDate.date">selected date:</h2>
+            <h2 v-if="selectedDate.date"  className="selected-date">{{ selectedDate.date.toUTCString().slice(5, 16).toLowerCase() }}</h2>
             <ViewDate v-if="selectedDate.date" 
                 :currentUser="currentUser"
                 :currentDate="currentDate" 
@@ -68,7 +68,7 @@ import PreviousDate from './PreviousDate.vue';
         width: min-content;
         padding-bottom: 20px;
         text-transform: lowercase;
-        border: 1px solid whitesmoke;
+        border: 2px solid whitesmoke;
         border-radius: 4px;
     }
     .dp__month_year_select {
@@ -80,15 +80,13 @@ import PreviousDate from './PreviousDate.vue';
     .dp__now_button {
         font-size: 20px;
         color: whitesmoke;
-        border-color: rgb(224, 223, 223);
-        font-family: Georgia, 'Times New Roman', Times, serif;
-        font-weight: 600;
+        border: 2px solid rgb(224, 223, 223);
     }
     .dp__cell_disabled {
         color: rgb(97, 96, 96);
     }
     .dp-custom-menu {
-        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-family: 'Michroma', sans-serif;
         border: none;
     }
     .select-input {
@@ -108,10 +106,13 @@ import PreviousDate from './PreviousDate.vue';
         filter: brightness(70%);
     }
     .dp__icon:hover {
-        stroke: darkred;
-        fill: darkred;
+        stroke: #990000;
+        fill: #990000;
     }
     .dp__inner_nav:hover {
         background-color: black;
+    }
+    .dp__today {
+        border: 3px solid var(--dp-primary-color);
     }
 </style>

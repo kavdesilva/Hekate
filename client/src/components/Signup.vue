@@ -34,7 +34,7 @@
                 <button type="submit">submit</button>
             </form>
         </div><br/>
-        <router-link to="/">close</router-link>
+        <span><router-link to="/">close</router-link></span>
     </div>
 </template>
 
