@@ -80,7 +80,6 @@ import PreviousDate from './PreviousDate.vue';
     .dp__now_button {
         font-size: 20px;
         color: whitesmoke;
-        border: 2px solid rgb(224, 223, 223);
     }
     .dp__cell_disabled {
         color: rgb(97, 96, 96);
@@ -102,8 +101,7 @@ import PreviousDate from './PreviousDate.vue';
         background-color: black;
     }
     .dp__button_bottom:hover {
-        background-color: black;
-        filter: brightness(70%);
+        background-color: #4c4c50;
     }
     .dp__icon:hover {
         stroke: #990000;
@@ -111,8 +109,5 @@ import PreviousDate from './PreviousDate.vue';
     }
     .dp__inner_nav:hover {
         background-color: black;
-    }
-    .dp__today {
-        border: 3px solid var(--dp-primary-color);
     }
 </style>
