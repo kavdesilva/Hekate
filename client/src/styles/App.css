@@ -32,6 +32,14 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    color: #990000;
+}
+
+nav a:focus-within {
+    color: #990000;
+}
+
 .form-container input {
     display: flex;
     flex-direction: column;
@@ -107,10 +115,6 @@ button:hover {
 button:active {
     color: whitesmoke;
     background-color: #990000;
-}
-
-a:hover {
-    color: #990000;
 }
 
 textarea {
