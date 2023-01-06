@@ -2,7 +2,7 @@
   <div id="app">
     <header>
       <router-link to="/">
-        <img src="./assets/hekates_wheel2.jpeg" id="hekate-logo"/>
+        <img :src="logoSwitch" id="hekate-logo" @mouseover="hover=true" @mouseleave="hover=false"/>
       </router-link>
       <NavBar :currentUser="currentUser" />
     </header>
@@ -20,19 +20,25 @@
     data: () => {
       return {
         currentUser: null,
-        currentDate: new Date()
+        currentDate: new Date(),
+        logoDefault: require("./assets/hekates_wheel.png"),
+        logoHover: require("./assets/hekates_wheel2.png"),
+        hover: false
       }
-    },
-    mounted() {
-        this.todaysDate()
     },
     methods: {
       logUser(user) {
         this.currentUser = user
-      },
-      todaysDate() {
-        console.log(this.currentDate)
-      },
+      }
+    },
+    computed: {
+      logoSwitch(){
+        if (this.hover == true){
+          return this.logoHover
+        }else{
+          return this.logoDefault
+        }
+      }
     }
   }
 </script>
