@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1></h1>
         <CalendarView :currentUser="currentUser" :currentDate="currentDate"/>
     </div>
 </template>

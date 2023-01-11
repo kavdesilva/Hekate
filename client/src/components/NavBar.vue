@@ -5,6 +5,7 @@
       <router-link to="/recall">recall</router-link>
       <router-link to="/reflect">reflect</router-link>
     </nav>
+    <br/>
 </template>
 
 <script>

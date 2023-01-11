@@ -1,7 +1,7 @@
 <template>
     <div>
         <p>delete</p>
-        <button v-on:click="deleteAllRecords">delete records</button><br />
+        <button v-on:click="deleteAllRecords">delete all records</button><br />
         <button v-on:click="deleteAccount">delete account</button><br />
         <router-link to="/">back to home</router-link>
     </div>

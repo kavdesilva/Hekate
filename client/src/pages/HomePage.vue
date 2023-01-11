@@ -13,7 +13,7 @@
         </header>
         <NextCycle :currentUser="currentUser"/>
         <!-- <button v-on:click="updateAccount">update account</button> -->
-        <button v-on:click="deleteAccount">delete account</button><br />
+        <button v-on:click="deleteAccount">delete</button><br />
         <button v-on:click="logOut">logout</button>
     </div>
 </template>
