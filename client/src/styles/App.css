@@ -12,7 +12,6 @@ p, nav a {
 }
 
 .selected-date {
-    font-size: 1.7em;
     color: #990000;
 }
 
@@ -22,10 +21,13 @@ p, nav a {
     border-radius: 50%;
 }
 
-nav {
+nav{
+    margin: 0 auto;
     display: flex;
     justify-content: space-evenly;
     padding: 25px;
+    border-bottom: 3px solid whitesmoke;
+    width: 80%;
 }
 
 a {

@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>record.</h1>
         <CurrentDate :currentDate="currentDate" :currentUser="currentUser"/>
         <!-- <PreviousDate /> -->
     </div>

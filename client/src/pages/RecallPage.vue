@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>recall.</h1>
+        <h1></h1>
         <CalendarView :currentUser="currentUser" :currentDate="currentDate"/>
     </div>
 </template>

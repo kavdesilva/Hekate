@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>reflect.</h1>
         <p>cycles recorded to date: {{records.length}}</p>
     </div>
 </template>
@@ -19,8 +18,13 @@ let db = new Localbase('db')
             this.getAllRecords()
         },
         methods: {
-            getAllRecords(){
-                this.records.push(db.collection(`${this.currentUser.username}-records`).get())
+            async getAllRecords(){
+                try {
+                    this.records = await db.collection(`${this.currentUser.username}-records`).get()
+                }
+                catch(error) {
+                    console.log('error: ', error)
+                }
             },
             // getCurrentMonth() {
             //     let currentMonth = null
