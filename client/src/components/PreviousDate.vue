@@ -124,6 +124,7 @@
 
 <script>
 import Localbase from 'localbase'
+import router from '@/router'
 let db = new Localbase('db')
     export default {
         name: 'PreviousDate',
@@ -165,6 +166,9 @@ let db = new Localbase('db')
                 }))
                 db.collection(`${this.currentUser.username}-records`).add(newRecord)
                 alert('record submitted')
+                this.$emit('showPreviousDateForm', null)
+                this.$emit('resetRecallPage', null)
+                router.push(`/recall`)
             },
             updateRecord() {
                 let recordUpdate = JSON.parse(JSON.stringify({
@@ -175,11 +179,11 @@ let db = new Localbase('db')
                     mood: this.formData.mood,
                     notes: this.formData.notes
                 }))
-                if (
-                    db.collection(`${this.currentUser.username}-records`).doc({ date: `${this.selectedDate.toISOString().slice(0, 10)}` }).get()
-                ){
-                    db.collection(`${this.currentUser.username}-records`).set(recordUpdate)
-                }
+                db.collection(`${this.currentUser.username}-records`).set(recordUpdate)
+                alert('record updated')
+                this.$emit('showPreviousDateForm', null)
+                this.$emit('resetRecallPage', null)
+                router.push(`/recall`)
             },
             deleteRecord() {
                 if (confirm(`are you sure you want to delete record for ${this.selectedDate.toUTCString().slice(5, 16).toLowerCase()}?`)){

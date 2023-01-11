@@ -4,7 +4,7 @@
       <router-link to="/">
         <img :src="logoSwitch" id="hekate-logo" @mouseover="hover=true" @mouseleave="hover=false"/>
       </router-link>
-      <NavBar :currentUser="currentUser" />
+      <NavBar :currentUser="currentUser" :currentDate="currentDate"/>
     </header>
     <main>
       <router-view :currentUser="currentUser" :currentDate="currentDate" @logUser="logUser"/>

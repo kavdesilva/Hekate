@@ -27,7 +27,12 @@
                 :previousDateSelected="previousDateSelected" 
                 @showPreviousDateForm="showPreviousDateForm"/>
         </div>
-        <PreviousDate v-else :selectedDate="selectedDate.date" :currentUser="currentUser"/>
+        <PreviousDate v-else 
+            :selectedDate="selectedDate.date" 
+            :currentUser="currentUser"
+            :previousDateSelected="previousDateSelected" 
+            @showPreviousDateForm="showPreviousDateForm"
+            @resetRecallPage="resetRecallPage"/>
     </div>
 </template>
 
@@ -48,15 +53,12 @@ import PreviousDate from './PreviousDate.vue';
                 previousDateSelected: null
             }
         },
-        mounted() {
-            this.resetRecallPage()
-        },
         methods: {
             showPreviousDateForm(value) {
                 this.previousDateSelected = value
             },
-            resetRecallPage() {
-                this.previousDateSelected = null
+            resetRecallPage(value) {
+                this.selectedDate.date = value
             }
         }
     }
