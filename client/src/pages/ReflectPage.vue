@@ -29,7 +29,8 @@ let db = new Localbase('db')
             // getCurrentMonth() {
             //     let currentMonth = null
             //     this.records.map((record) => {
-            //         // map records for each record with date matching current month/year
+            //     })
+            //     // map records for each record with date matching current month/year
             // }
 
             // 9/19 - this page has the following two bugs: automatic creation of a collection in the local db; also counts collections rather than the records within. reformulation required.

@@ -114,9 +114,9 @@
                         v-model="formData.notes"
                         v-on:input="handleFormChange"></textarea>
                 </section>
-                <button type="submit">add</button>
+                <button v-if="!recordExists" type="submit">add</button>
             </form>
-            <button v-on:click="updateRecord">update</button>
+            <button v-if="recordExists" v-on:click="updateRecord">update</button>
             <button v-on:click="deleteRecord">delete</button>
         </div>
     </div>
@@ -134,8 +134,12 @@ let db = new Localbase('db')
                 symptoms: [],
                 mood: '',
                 notes: ''
-            }
+            },
+            recordExists: false
         }),
+        mounted() {
+            this.checkRecord()
+        },
         methods: {
             handleFormChange(e) {
                 this[e.target.name] = e.target.value
@@ -143,6 +147,12 @@ let db = new Localbase('db')
             handleFormSubmit (e) {
                 e.preventDefault()
                 this.addRecord()
+            },
+            async checkRecord() {
+                let record = await db.collection(`${this.currentUser.username}-records`).doc({ date: `${this.currentDate.toISOString().slice(0, 10)}` }).get()
+                if(record){
+                    this.recordExists = true
+                }
             },
             addRecord() {
                 let newRecord = JSON.parse(JSON.stringify({
@@ -165,11 +175,8 @@ let db = new Localbase('db')
                     mood: this.formData.mood,
                     notes: this.formData.notes
                 }))
-                if (
-                    db.collection(`${this.currentUser.username}-records`).doc({ date: `${this.currentDate.toISOString().slice(0, 10)}` }).get()
-                ){
-                    db.collection(`${this.currentUser.username}-records`).set(recordUpdate)
-                }
+                db.collection(`${this.currentUser.username}-records`).set(recordUpdate)
+
             },
             deleteRecord() {
                 if (confirm(`are you sure you want to delete record for ${this.currentDate.toUTCString().slice(5, 16).toLowerCase()}?`)){
@@ -181,3 +188,7 @@ let db = new Localbase('db')
         }
     }
 </script>
+
+if (
+
+)
